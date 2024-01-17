@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CC3-OOP-GameConcept/1.0.0": {
+        "runtime": {
+          "CC3-OOP-GameConcept.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CC3-OOP-GameConcept/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

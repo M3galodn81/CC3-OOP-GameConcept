@@ -1,0 +1,14 @@
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\bin\Debug\net8.0\CC3-OOP-GameConcept.exe
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\bin\Debug\net8.0\CC3-OOP-GameConcept.deps.json
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\bin\Debug\net8.0\CC3-OOP-GameConcept.runtimeconfig.json
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\bin\Debug\net8.0\CC3-OOP-GameConcept.dll
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\bin\Debug\net8.0\CC3-OOP-GameConcept.pdb
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\CC3-OOP-GameConcept.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\CC3-OOP-GameConcept.AssemblyInfoInputs.cache
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\CC3-OOP-GameConcept.AssemblyInfo.cs
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\CC3-OOP-GameConcept.csproj.CoreCompileInputs.cache
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\CC3-OOP-GameConcept.dll
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\refint\CC3-OOP-GameConcept.dll
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\CC3-OOP-GameConcept.pdb
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\CC3-OOP-GameConcept.genruntimeconfig.cache
+C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\ref\CC3-OOP-GameConcept.dll
