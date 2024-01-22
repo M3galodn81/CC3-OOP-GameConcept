@@ -2,7 +2,7 @@
 
 ## Where you as a character will try to reach to the top of the tower while fighting enemies
 
-### Idk 13 Floors exists so ye gl
+### Idk 13 Floors exists so ye gl or 6 nalang
 
 Every floor has 6 chambers(levels) except the 13th floor with 18 chambers cuz why not
 

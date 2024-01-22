@@ -1,0 +1,51 @@
+1st Floor ( 1 elite )
+
+Safehouse 
+Normal
+Normal / Elite
+Normal / Elite
+Normal / Elite
+Boss
+
+2nd Floor (0 - 1 Safehouse, 0 - 2 elite)
+
+Normal / Safehouse
+Normal / Safehouse
+Normal / Elite
+Normal / Elite
+Normal / Elite
+Boss
+
+3rd Floor (0 - 1 Safehouse, 0 - 3 elite)
+
+Normal / Safehouse 
+Normal / Elite
+Normal / Elite
+Normal / Safehouse
+Normal / Elite
+Boss
+
+4th Floor (0 - 1 Safehouse, 1 - 3 elite)
+
+Normal / Safehouse 
+Normal / Elite
+Normal / Safehouse
+Normal / Elite
+Normal / Elite
+Boss
+
+5th Floor (0 - 1 Safehouse, 1 - 4 elite)
+
+Normal / Safehouse 
+Normal / Elite
+Normal / Safehouse / Elite
+Normal / Elite
+Elite / Safehouse
+Boss
+
+6th Floor (1 Safehouse, 1 -2 elite)
+
+Normal
+Elite
+Elite / Safehouse
+Boss

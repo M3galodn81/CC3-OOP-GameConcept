@@ -132,6 +132,7 @@ namespace TowerGame
 
             #endregion
             #region Battle Tutorial Phase? ig
+        
             Console.WriteLine("Tutorial Stage");
 
             Console.WriteLine("As of now , you can only do basic attacks so ye pain. ");
@@ -161,7 +162,8 @@ namespace TowerGame
             }       
             } while (! Console.KeyAvailable);
 
-            BasicEnemy slime = new BasicEnemy("Slime",30,30,0,5,0,0,"A small gooey and goofy creature. Deals small amount of magic damage.");
+            BasicEnemy slime = new BasicEnemy();
+            slime.SetUp("Big Slime",50,50,0,5,0,0,"A small gooey and goofy creature. Deals small amount of magic damage.");
 
             // FIGHT with basic enemy
 
@@ -186,12 +188,13 @@ namespace TowerGame
 
             if (player.isDead()){
                 Console.WriteLine("That should not supposed to happen but ye, howwwwwwwwwwwwwwwwwwwww?");
+            } else {
+                Console.WriteLine("Congrats. You defeat the "+ slime.name + " in " + turns +" turn/s. Cool.");
             }
+            
+            #endregion
 
-            Console.WriteLine("Congrats. You defeat the "+ slime.name + " in " + turns +" turn. Cool.");
-
-
-
+            #region Chamber navigation tutorial ig
             #endregion
         }
     }

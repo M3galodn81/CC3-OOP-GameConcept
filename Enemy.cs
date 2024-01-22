@@ -45,7 +45,7 @@ namespace TowerGame{
     }
 
     public class BasicEnemy : Enemy{
-        public BasicEnemy(string name_input, float hp_input, int hp_limit_input, int physical_attack_input, int magic_attack_input, int defense_input, int magic_defense_input, string description_input){
+        public void SetUp(string name_input, float hp_input, int hp_limit_input, int physical_attack_input, int magic_attack_input, int defense_input, int magic_defense_input, string description_input){
             name = name_input;
             hp = hp_input;
             hp_limit = hp_limit_input;
@@ -57,5 +57,18 @@ namespace TowerGame{
         }
 
         
+    }
+
+    public class EnemyManager{
+        public void SpawnEnemy(Enemy enemy = null)
+        {
+            if (enemy == null)
+            {
+                // Default behavior (e.g., spawn a basic enemy)
+                enemy = new BasicEnemy();
+            }
+
+            // Spawn the enemy and perform other actions
+        }
     }
 }
