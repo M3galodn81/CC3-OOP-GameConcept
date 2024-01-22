@@ -13,7 +13,7 @@ namespace TowerGame {
         public int current_floor_level = 0;
 
         // Player Stats
-        public float hp = 123;
+        public double hp = 123;
         public int hp_limit = 123;
         public int physical_attack = 0;
         public int magic_attack = 0;
@@ -21,7 +21,9 @@ namespace TowerGame {
         public int defense = 0;
         public int magic_defense = 0;
 
+        public Item equipped_item = null;
 
+        public Skill first_skill = null;
 
 
 
@@ -104,7 +106,7 @@ namespace TowerGame {
         }
 
 
-        public void UpdateHP(int enemy_damage){
+        public void UpdateHP(double enemy_damage){
             hp = hp - enemy_damage;
 
             if (hp <= 0){
