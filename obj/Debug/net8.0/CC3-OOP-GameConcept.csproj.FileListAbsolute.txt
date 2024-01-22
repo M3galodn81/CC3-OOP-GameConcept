@@ -12,3 +12,4 @@ C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0
 C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\CC3-OOP-GameConcept.pdb
 C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\CC3-OOP-GameConcept.genruntimeconfig.cache
 C:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\ref\CC3-OOP-GameConcept.dll
+c:\Users\admin\Documents\Visual Studio Code\CC3-OOP-GameConcept\obj\Debug\net8.0\CC3-OOP-GameConcept.sourcelink.json

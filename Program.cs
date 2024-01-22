@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+
 namespace TowerGame
 {
     class Program
     {
         static void Main(string[] args)
         {
-
-
+            #region Start of the Game
             // Beginning Script
             Console.WriteLine("Welcome to the Game of Pure Pain of Suffering");
             Console.WriteLine("Your goal is to make to the last chamber in the 13th floor. GLHF :)");
@@ -16,10 +16,10 @@ namespace TowerGame
             // User Input (Name)
             String name = "";
             MainCharacter player = new MainCharacter();
-            while (name == ""){
+            while (name == "" || name == null){
                 Console.WriteLine("What is your name?");
                 name = Console.ReadLine();
-                if (name == ""){
+                if (name == "" || name == null){
                     Console.WriteLine("The name can't be empty");
                 }
             }
@@ -55,7 +55,58 @@ namespace TowerGame
             
             player.StatCheck();
 
+            #endregion
+            #region Tutorial Phase
+            Console.WriteLine("Tutorial Stage");
 
+            Console.WriteLine("As of now , you can only do basic attacks so ye pain. ");
+            Console.WriteLine("Anyway, this battle system here is {turn-based} since console app moment. ");
+            Console.WriteLine("Usually you will have the first to use the turn then it's the enemy's turn");
+            Console.WriteLine("The controls during battle are: \n");
+
+            Console.WriteLine("[1] for basic attack   ");
+            Console.WriteLine("[2] for first skill    ");
+            Console.WriteLine("[3] for ultimate skill \n");
+            Console.WriteLine("[Q] for stat check     ");
+            Console.WriteLine("[E] for using the equipped item   ");
+            Console.WriteLine("[F1] for help panel   ");
+
+            Console.WriteLine("BTW, you don't need to press Enter during the battle, since the developer will suffer just for good user experience LMAO");
+            Console.WriteLine("Anyway, before you encounter an enemy later");
+            Console.WriteLine("You are only enable to do a basic attack");
+            Console.WriteLine("I hope you should remember that");
+
+            Console.WriteLine("SO are you ready to suffer? ");
+            Console.WriteLine("Press [Enter] to continue");
+
+
+            do {
+                if (Console.ReadKey(true).Key == ConsoleKey.Enter) {
+                    break;
+            }       
+            } while (! Console.KeyAvailable);
+
+            BasicEnemy slime = new BasicEnemy("Slime",30,30,5,0,0,0);
+
+            // FIGHT with basic enemy
+
+            Console.WriteLine(player.player_name + " vs " + slime.name);
+
+            // Loop will not end until someone dies
+            while (!player.isDead() && !slime.isDead()){
+                Console.WriteLine("==========================================");
+                Console.WriteLine("|" + player.player_name + " | " + player.hp + " / " + player.hp_limit + " |") ;
+                Console.WriteLine("==========================================");
+                Console.WriteLine("|" + slime.name + " | " + slime.hp + " / " + slime.hp_limit + " |") ;
+                Console.WriteLine("==========================================\n");
+
+                
+
+
+
+            }
+
+            #endregion
         }
     }
 }
