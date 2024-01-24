@@ -6,16 +6,15 @@ namespace TowerGame {
         // Player Info
         public String player_name = "";
 
-        public int role = 0;
-        public String role_name = "";
 
         // Player Progression
         public int current_floor_level = 0;
+        public int negotiation_skill_level = 0;
 
         // Player Stats
-        public double hp = 123;
-        public int hp_limit = 123;
-        public int physical_attack = 0;
+        public double hp = 150;
+        public int hp_limit = 150;
+        public int physical_attack = 30;
         public int magic_attack = 0;
 
         public int defense = 0;
@@ -25,47 +24,37 @@ namespace TowerGame {
 
         public Skill first_skill = null;
 
-
-
-        public void RoleInitiation(int role_number){
-            if (role_number == 1){
-                role = 1;
-                role_name = "Swordmaster";
-
-                
-                hp = 150;
-                hp_limit = 150;
-                physical_attack = 30;
-                defense = 20;
-
-            } else if (role_number == 2){
-                role = 2;
-                role_name = "Wizard";
-
-                hp = 100;
-                hp_limit = 100;
-                magic_attack = 30;
-                magic_defense = 10;
-
-            } else if (role_number == 3){
-                role = 3;
-                role_name = "Gunslinger";
-
-                hp = 125;
-                hp_limit = 125;
-                physical_attack = 25;
-                defense = 10;
-
+        
+        public void NameAssignment(){
+            
+            while (true){
+                Console.WriteLine("Hello, Type your username");
+                String user_input = Console.ReadLine();
+                if (user_input == "" || user_input == ""){
+                    Console.WriteLine("The username cannot be blank.");
+                    continue;
+                } else {
+                    player_name = user_input;
+                    break;
+                }
             }
         }
 
         public void StatCheck(){
             double hp_display = Math.Floor(hp);
+            string item_display = "No Item";
+            string skill_display = "No Skill Learned";
+
+            if (equipped_item != null){
+                item_display = equipped_item.name;
+            }
+
+            if (first_skill != null){
+                skill_display = first_skill.name ;
+            }
 
             Console.WriteLine("============================================================");
             Console.WriteLine("| Player Name: " + player_name + " |");
-            Console.WriteLine("============================================================");
-            Console.WriteLine("| Role: " + role_name + " |");
             Console.WriteLine("============================================================");
             Console.WriteLine("| HP : " + hp_display + "/"+ hp_limit + " |");
             Console.WriteLine("| Attack (Physical): " + physical_attack + " |");
@@ -73,6 +62,43 @@ namespace TowerGame {
             Console.WriteLine("| Defense: " + defense + " |");
             Console.WriteLine("| Defense (Magic): " + magic_defense + " |");
             Console.WriteLine("============================================================");
+            Console.WriteLine("| Equipped Item : " + item_display + " |");
+            Console.WriteLine("| First Skill : " + skill_display + " |");
+            Console.WriteLine("============================================================\n");
+
+
+        }
+        
+        public void pickItem(Item item){
+            if (equipped_item == null) {
+                equipped_item = item;
+            } else if (item.id_number == equipped_item.id_number) {
+                equipped_item.amount = equipped_item.amount + item.amount;
+            } else {
+                // prompts the user to decides if they what to change their equipped item;
+
+                Console.WriteLine("You can only hold 1 kind of an item.");
+                Console.WriteLine("You can either keep your " + equipped_item.name + " or pick the " + item.name + ". " ); 
+                
+                while (true){
+                    Console.WriteLine("Type [E] to equipped the " + item.name);
+                    Console.WriteLine("Type [X] to keep your " + equipped_item.name);
+
+                    string user_input = Console.ReadLine();
+                    switch (user_input){
+                        case "E":
+                            Console.WriteLine("You equipped " + item.name  +".");
+                            break;
+                        case "X":
+                            Console.WriteLine("You keep your " + equipped_item.name  +".");
+                            break;
+                        default:
+                            Console.WriteLine("Use capital letters. [E] and [X] are the only options here.");
+                            continue;
+                    }
+                    break;
+                }
+            }
         }
 
         public Boolean isDead(){
@@ -89,22 +115,6 @@ namespace TowerGame {
                 hp = hp_limit; 
             }
         }
-
-        public void LevelUp(){
-            current_floor_level += 1;
-            switch (role){
-                case 1:
-                    break;
-                
-                case 2:
-                    break;
-                
-                case 3:
-                    break;
-                
-            }
-        }
-
 
         public void UpdateHP(double enemy_damage){
             hp = hp - enemy_damage;
