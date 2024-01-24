@@ -31,20 +31,19 @@ namespace TowerGame{
             double hp_display = Math.Floor(hp);
 
             Console.WriteLine("============================================================");
-            Console.WriteLine("| Enemy Name: " + name + " |");
+            Console.WriteLine("| Enemy Name             : " + name + " |");
             Console.WriteLine("============================================================");
-            Console.WriteLine("| Description : " + description + " |");
+            Console.WriteLine("| Description            : " + description + " |");
             Console.WriteLine("============================================================");
-            Console.WriteLine("| HP : " + hp_display + "/"+ hp_limit + " |");
-            Console.WriteLine("| Attack (Physical): " + physical_attack + " |");
-            Console.WriteLine("| Attack (Magic): " + magic_attack + " |");
-            Console.WriteLine("| Defense: " + defense + " |");
-            Console.WriteLine("| Defense (Magic): " + magic_defense + " |");
+            Console.WriteLine("| HP                     : " + hp_display + "/"+ hp_limit + " |");
+            Console.WriteLine("| Attack (Physical)      : " + physical_attack + " |");
+            Console.WriteLine("| Attack (Magic)         : " + magic_attack + " |");
+            Console.WriteLine("| Defense                : " + defense + " |");
+            Console.WriteLine("| Defense (Magic)        : " + magic_defense + " |");
             Console.WriteLine("============================================================");
+        
         }
-    }
-
-    public class BasicEnemy : Enemy{
+    
         public void SetUp(string name_input, float hp_input, int hp_limit_input, int physical_attack_input, int magic_attack_input, int defense_input, int magic_defense_input, string description_input){
             name = name_input;
             hp = hp_input;
@@ -54,21 +53,6 @@ namespace TowerGame{
             defense = defense_input;
             magic_defense = magic_defense_input; 
             description = description_input;
-        }
-
-        
-    }
-
-    public class EnemyManager{
-        public void SpawnEnemy(Enemy enemy = null)
-        {
-            if (enemy == null)
-            {
-                // Default behavior (e.g., spawn a basic enemy)
-                enemy = new BasicEnemy();
-            }
-
-            // Spawn the enemy and perform other actions
         }
     }
 }

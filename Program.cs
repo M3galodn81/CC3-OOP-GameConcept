@@ -89,7 +89,20 @@ namespace TowerGame
             player.pickItem(basic_health_potion);
             player.StatCheck();
 
+            Skill fireball = new Skill();
+            fireball.SkillGeneralSetup(1,"Fireball", "Shoot a fireball to the enemy to deal magic damage",0,2,0);
+            fireball.SkillAttackSetup(2,50,0,0,0);
 
+            player.first_skill = fireball;
+
+            player.StatCheck();
+
+            fireball.SkillInfo();
+
+            Enemy slime = new Enemy();
+            slime.SetUp("Slime",30,30,0,5,0,1,"A small creature");
+
+            slime.StatCheck();
 
             #endregion
 

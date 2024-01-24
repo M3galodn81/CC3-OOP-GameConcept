@@ -17,6 +17,7 @@ namespace TowerGame{
         public int hp_increase_percentage = 0; 
         public int hp_increase_amount = 0;
 
+        public int attack_type = 0; // 1 physical , 2 magic , 3 mixed , 4 true
 
         public int attack_amount = 0; 
         public int attack_percentage = 0; 
@@ -57,7 +58,8 @@ namespace TowerGame{
             hp_increase_percentage = hp_increase_percentage_input;
         }
 
-        public void SkillAttackSetup(int attack_amount_input, int attack_percentage_input, int attack_increase_amount_input , int attack_increase_percentage_input){
+        public void SkillAttackSetup(int attack_type_input, int attack_amount_input, int attack_percentage_input, int attack_increase_amount_input , int attack_increase_percentage_input){
+            attack_type = attack_type_input;
             attack_amount = attack_amount_input;
             attack_percentage = attack_percentage_input;
             attack_increase_amount = attack_increase_percentage_input;
@@ -78,6 +80,84 @@ namespace TowerGame{
             magic_defense_increase_percentage = magic_defense_increase_percentage_input;
         }
 
+
+        public void SkillInfo(){
+            string effect;
+            string status;
+            string a_type;
+            
+            if (isReady == true){
+                status = "Skill is ready to use";
+            } else {
+                status = "Needs to be charged";
+            }
+
+            if (number_of_turns_in_effect == 0){
+                effect = "Instantly in one turn";
+            } else {
+                effect = "Lasts for " + Convert.ToString(number_of_turns_in_effect + 1) + " turns" ;
+            }
+
+             
+
+            Console.WriteLine("============================================================");
+            Console.WriteLine(" | Name                  : " + name + " | ");
+            Console.WriteLine(" | Description           : " + description + " | ");
+            Console.WriteLine(" | Duration              : " + effect + " | ");
+            Console.WriteLine("============================================================");
+            Console.WriteLine(" | Status                : " + status + " | ");
+            Console.WriteLine(" | Skill Points          : " + skill_point + " / " + skill_point_limit + " | ");
+            Console.WriteLine("============================================================");
+            CheckContent(heal_amount                ,"Heal Amount");
+            CheckContent(heal_percentage            ,"Heal Percentage");
+            CheckContent(hp_increase_amount         ,"HP Increase Amount");
+            CheckContent(hp_increase_percentage     ,"HP Increase Percentage");
+
+            if (attack_type != 0){
+                switch (attack_type){
+                    case 1:
+                        a_type = "Physical Damage"; 
+                        Console.WriteLine(" | Attack Type : " + a_type + " | " );
+                        break;
+                    case 2:
+                        a_type = "Magic Damage"; 
+                        Console.WriteLine(" | Attack Type : " + a_type + " | " );
+                        break;
+                    case 3:
+                        a_type = "Mixed Damage";
+                        Console.WriteLine(" | Attack Type : " + a_type + " | " ); 
+                        break;
+                    case 4:
+                        a_type = "True Damage"; 
+                        Console.WriteLine(" | Attack Type : " + a_type + " | " );
+                        break;
+                }
+                
+            }  
+            
+            CheckContent(attack_amount                  ,"Attack Amount");
+            CheckContent(attack_percentage              ,"Attack Percentage");
+            CheckContent(attack_increase_amount         ,"Attack Increase Amount");
+            CheckContent(attack_increase_percentage     ,"Attack Increase Percentage");
+
+            CheckContent(defense_amount                  ,"Defense Amount");
+            CheckContent(defense_percentage              ,"Defense Percentage");
+            CheckContent(defense_increase_amount         ,"Defense Increase Amount");
+            CheckContent(defense_increase_percentage     ,"Defense Increase Percentage");
+
+            CheckContent(magic_defense_amount                  ,"Magic Defense Amount");
+            CheckContent(magic_defense_percentage              ,"Magic Defense Percentage");
+            CheckContent(magic_defense_increase_amount         ,"Magic Defense Increase Amount");
+            CheckContent(magic_defense_increase_percentage     ,"Magic Defense Increase Percentage");
+
+            Console.WriteLine("============================================================");
+        }
+
+        void CheckContent(int stat, string stat_name){
+            if (stat != 0){
+                Console.WriteLine(" | " + stat_name + " : " + stat +  " | ");
+            }
+        } 
     }
 
 

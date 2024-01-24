@@ -9,6 +9,8 @@ namespace TowerGame {
 
         // Player Progression
         public int current_floor_level = 0;
+        public int basic_enemy_kills = 0;
+        public int elite_enemy_kills = 0;
         public int negotiation_skill_level = 0;
 
         // Player Stats
@@ -54,21 +56,16 @@ namespace TowerGame {
             }
 
             Console.WriteLine("============================================================");
-            Console.WriteLine("| Player Name: " + player_name + " |");
+            Console.WriteLine("| Player Name            : " + player_name + " |");
             Console.WriteLine("============================================================");
-            Console.WriteLine("| HP : " + hp_display + "/"+ hp_limit + " |");
-            Console.WriteLine("| Attack (Physical): " + physical_attack + " |");
-            Console.WriteLine("| Attack (Magic): " + magic_attack + " |");
-            Console.WriteLine("| Defense: " + defense + " |");
-            Console.WriteLine("| Defense (Magic): " + magic_defense + " |");
+            Console.WriteLine("| HP                     : " + hp_display + "/"+ hp_limit + " |");
+            Console.WriteLine("| Attack (Physical)      : " + physical_attack + " |");
+            Console.WriteLine("| Attack (Magic)         : " + magic_attack + " |");
+            Console.WriteLine("| Defense                : " + defense + " |");
+            Console.WriteLine("| Defense (Magic)        : " + magic_defense + " |");
             Console.WriteLine("============================================================");
-
-
-            Console.WriteLine("| Equipped Item : " + item_display + " |");
-
-
-            
-            Console.WriteLine("| First Skill : " + skill_display + " |");
+            Console.WriteLine("| Equipped Item          : " + item_display + " |");
+            Console.WriteLine("| First Skill            : " + skill_display + " |");
             Console.WriteLine("============================================================\n");
 
 

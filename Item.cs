@@ -79,6 +79,58 @@ namespace TowerGame{
             magic_defense_increase_amount = magic_defense_increase_percentage_input;
             magic_defense_increase_percentage = magic_defense_increase_percentage_input;
         }
+
+        public void SkillInfo(){
+            string effect;
+            
+        
+
+            if (number_of_turns_in_effect == 0){
+                effect = "Instantly in one turn";
+            } else {
+                effect = "Lasts for " + Convert.ToString(number_of_turns_in_effect + 1) + " turns" ;
+            }
+
+             
+
+            Console.WriteLine("============================================================");
+            Console.WriteLine(" | Name                  : " + name + " | ");
+            Console.WriteLine(" | Description           : " + description + " | ");
+            Console.WriteLine(" | Amount              : " + amount + " | ");
+            Console.WriteLine(" | Duration              : " + effect + " | ");
+
+            Console.WriteLine("============================================================");
+
+
+            CheckContent(heal_amount                ,"Heal Amount");
+            CheckContent(heal_percentage            ,"Heal Percentage");
+            CheckContent(hp_increase_amount         ,"HP Increase Amount");
+            CheckContent(hp_increase_percentage     ,"HP Increase Percentage");
+
+            
+            CheckContent(attack_amount                  ,"Attack Amount");
+            CheckContent(attack_percentage              ,"Attack Percentage");
+            CheckContent(attack_increase_amount         ,"Attack Increase Amount");
+            CheckContent(attack_increase_percentage     ,"Attack Increase Percentage");
+
+            CheckContent(defense_amount                  ,"Defense Amount");
+            CheckContent(defense_percentage              ,"Defense Percentage");
+            CheckContent(defense_increase_amount         ,"Defense Increase Amount");
+            CheckContent(defense_increase_percentage     ,"Defense Increase Percentage");
+
+            CheckContent(magic_defense_amount                  ,"Magic Defense Amount");
+            CheckContent(magic_defense_percentage              ,"Magic Defense Percentage");
+            CheckContent(magic_defense_increase_amount         ,"Magic Defense Increase Amount");
+            CheckContent(magic_defense_increase_percentage     ,"Magic Defense Increase Percentage");
+
+            Console.WriteLine("============================================================");
+        }
+
+        void CheckContent(int stat, string stat_name){
+            if (stat != 0){
+                Console.WriteLine(" | " + stat_name + " : " + stat +  " | ");
+            }
+        } 
     }
 
 }
