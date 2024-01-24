@@ -86,7 +86,8 @@ namespace TowerGame
             basic_health_potion.ItemGeneralSetup(1, "Basic Health Potion", "A potion that can heal small amount of HP", 1, 0);
             basic_health_potion.ItemHPSetup(25,0,0,0);
 
-            
+            player.pickItem(basic_health_potion);
+            player.StatCheck();
 
 
 

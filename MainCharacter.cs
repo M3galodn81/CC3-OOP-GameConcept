@@ -62,7 +62,12 @@ namespace TowerGame {
             Console.WriteLine("| Defense: " + defense + " |");
             Console.WriteLine("| Defense (Magic): " + magic_defense + " |");
             Console.WriteLine("============================================================");
+
+
             Console.WriteLine("| Equipped Item : " + item_display + " |");
+
+
+            
             Console.WriteLine("| First Skill : " + skill_display + " |");
             Console.WriteLine("============================================================\n");
 
