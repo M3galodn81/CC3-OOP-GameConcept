@@ -12,12 +12,22 @@ namespace TowerGame{
         public int number_of_turns_in_effect = 0;
 
 
+        public int skill_type = 1;
+        // 1 for heal
+        // 2 for hp increase
+        // 3 for attack
+        // 4 for def
+        // 5 for magic res
+
+        public Boolean canBeUltimate = false;
+
+
         public int heal_amount = 0; 
         public int heal_percentage = 0; 
         public int hp_increase_percentage = 0; 
         public int hp_increase_amount = 0;
 
-        public int attack_type = 0; // 1 physical , 2 magic , 3 mixed , 4 true
+        public int attack_type = 0; // 1 physical , 2 magic , 3 mixed
 
         public int attack_amount = 0; 
         public int attack_percentage = 0; 
@@ -80,6 +90,11 @@ namespace TowerGame{
             magic_defense_increase_percentage = magic_defense_increase_percentage_input;
         }
 
+
+
+        public void UseSkill(){
+
+        }
 
         public void SkillInfo(){
             string effect;

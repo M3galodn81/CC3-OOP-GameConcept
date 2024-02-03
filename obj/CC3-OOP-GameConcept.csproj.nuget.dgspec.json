@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\admin\\Documents\\Visual Studio Code\\CC3-OOP-GameConcept\\CC3-OOP-GameConcept.csproj": {}
+    "C:\\Users\\admin\\Documents\\Visual Studio Code\\CC3-OOP-GameConcept\\CC3-OOP-GameConcept.csproj": {}
   },
   "projects": {
-    "c:\\Users\\admin\\Documents\\Visual Studio Code\\CC3-OOP-GameConcept\\CC3-OOP-GameConcept.csproj": {
+    "C:\\Users\\admin\\Documents\\Visual Studio Code\\CC3-OOP-GameConcept\\CC3-OOP-GameConcept.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\admin\\Documents\\Visual Studio Code\\CC3-OOP-GameConcept\\CC3-OOP-GameConcept.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Documents\\Visual Studio Code\\CC3-OOP-GameConcept\\CC3-OOP-GameConcept.csproj",
         "projectName": "CC3-OOP-GameConcept",
-        "projectPath": "c:\\Users\\admin\\Documents\\Visual Studio Code\\CC3-OOP-GameConcept\\CC3-OOP-GameConcept.csproj",
+        "projectPath": "C:\\Users\\admin\\Documents\\Visual Studio Code\\CC3-OOP-GameConcept\\CC3-OOP-GameConcept.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\admin\\Documents\\Visual Studio Code\\CC3-OOP-GameConcept\\obj\\",
+        "outputPath": "C:\\Users\\admin\\Documents\\Visual Studio Code\\CC3-OOP-GameConcept\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config"

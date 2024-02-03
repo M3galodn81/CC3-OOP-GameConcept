@@ -1,5 +1,7 @@
 using System.Runtime.Serialization;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using System.Diagnostics.CodeAnalysis;
 
 namespace TowerGame {
     public  class MainCharacter{
@@ -11,22 +13,25 @@ namespace TowerGame {
         public int current_floor_level = 0;
         public int basic_enemy_kills = 0;
         public int elite_enemy_kills = 0;
+        public int boss_enemy_kills = 0;
         public int negotiation_skill_level = 0;
 
         // Player Stats
         public double hp = 150;
         public int hp_limit = 150;
-        public int physical_attack = 30;
+        public int physical_attack = 20;
         public int magic_attack = 0;
 
         public int defense = 0;
         public int magic_defense = 0;
 
+        public int basic_damage_type = 1; // 1 for phys ,2  for magic
         public Item equipped_item = null;
 
         public Skill first_skill = null;
+        public Skill second_skill = null;
+        public Skill ultimate_skill = null;
 
-        
         public void NameAssignment(){
             
             while (true){
@@ -90,6 +95,7 @@ namespace TowerGame {
                     switch (user_input){
                         case "E":
                             Console.WriteLine("You equipped " + item.name  +".");
+                            equipped_item = item;
                             break;
                         case "X":
                             Console.WriteLine("You keep your " + equipped_item.name  +".");
@@ -100,6 +106,45 @@ namespace TowerGame {
                     }
                     break;
                 }
+            }
+        }
+
+        public void learnSkill(Skill skill){
+            if (first_skill == null && skill.canBeUltimate == false){
+                first_skill = skill;
+                Console.WriteLine("You learn " + skill.name  +".");
+
+            } else if (second_skill == null && skill.canBeUltimate == false){
+                Console.WriteLine("You learn " + skill.name  +".");
+                second_skill = skill;
+
+            } else {
+                Console.WriteLine("You can only have 2 skills pnly");
+                Console.WriteLine(String.Format("You can replace {0} or {1} with {2} or",first_skill.name ,second_skill.name , skill.name));
+                Console.WriteLine(String.Format("don't learn {0}",skill));
+
+                while (true){
+                    Console.WriteLine("Press [1] if you want to replace " + first_skill.name + " with " + skill.name + ".");
+                    Console.WriteLine("Press [2] if you want to replace " + second_skill.name + " with " + skill.name + ".");
+                    Console.WriteLine("Press [X] if you want to keep your skills.");
+
+                    string user_input = Console.ReadLine();
+                    switch (user_input){
+                        case "1":
+                            Console.WriteLine("You learn " + skill.name  +" replacing "+ first_skill.name +".");
+                            break;
+                        case "2":
+                            Console.WriteLine("You learn " + skill.name  +" replacing "+ second_skill.name +".");
+                            break;
+                        default:
+                            Console.WriteLine("Use capital letters. [1], [2] and [X] are the only options here.");
+                            continue;
+                    }
+                    break;
+
+                }
+
+
             }
         }
 
@@ -118,12 +163,36 @@ namespace TowerGame {
             }
         }
 
-        public void UpdateHP(double enemy_damage){
-            hp = hp - enemy_damage;
+        public double UpdateHP(double enemy_damage,int attack_type){
+            double after_dmg = 0 ;
+
+            switch (attack_type){
+                    case 1:
+                        hp = hp - (enemy_damage - defense);
+                        after_dmg = enemy_damage - defense;
+                        break;
+                    case 2:
+                        double final_magic_attack = enemy_damage * (1 -(magic_defense * 0.01d));
+                        hp = hp - final_magic_attack;
+                        after_dmg = final_magic_attack;
+                        break;
+                    case 3:
+                        hp = hp - (enemy_damage - defense);
+                        hp = hp - (enemy_damage * (1 -(magic_defense * 0.01d)));
+                        after_dmg = (enemy_damage - defense) + (enemy_damage * (1 -(magic_defense * 0.01d)));
+                        break;
+                    case 4:
+                        hp = hp - enemy_damage;
+                        after_dmg = enemy_damage;
+                        break;
+                }
+            
 
             if (hp <= 0){
                 hp = 0;
             }
+
+            return after_dmg;
         }
     }
 }
