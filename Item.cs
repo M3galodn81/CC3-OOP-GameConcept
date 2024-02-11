@@ -131,6 +131,9 @@ namespace TowerGame{
                 Console.WriteLine(" | " + stat_name + " : " + stat +  " | ");
             }
         } 
+
+
+        
     }
 
 }

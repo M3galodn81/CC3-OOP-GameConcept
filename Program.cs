@@ -118,7 +118,7 @@ namespace TowerGame
                             break;
                     }
                 } 
-                else if (enemy.GetType() == typeof(TowerGame.EliteEnemy)){
+                else if (enemy.GetType() == typeof(EliteEnemy)){
                     var elite = enemy as EliteEnemy;
                     if (elite != null){
                         if (elite.first_skill.isReady == true){
@@ -151,7 +151,15 @@ namespace TowerGame
             turns++;
             }
 
+            // end battle and reward player
             if (enemy.isDead() == true){
+                if (enemy.GetType() == typeof(Enemy)){
+                    player.basic_enemy_kills ++;
+                } else if(enemy.GetType() == typeof(EliteEnemy)){
+                    player.elite_enemy_kills ++;
+                } else if(enemy.GetType() == typeof(BossEnemy)){
+                    player.boss_enemy_kills ++;
+                } 
                 return true;
             } else {
                 return false;
@@ -193,73 +201,92 @@ namespace TowerGame
         //     #endregion
 
 
-        //     #region Start of the Game
-        //     // Beginning Script
-        //     Console.WriteLine("INSERT GAME TITLE HERE lmao");
-        //     Console.WriteLine("Your goal is to escape the castle while rescuing the queen while encountering a lot of enemies . GLHF :)");
-        //     Console.WriteLine("\" A \" \n");
+//             #region Start of the Game
+//             // Beginning Script
+//             Console.WriteLine(@"
+// __________                       __________        .__                            .___   _________       _____  _____            .__                
+// \______   \__ _________   ____   \______   \_____  |__| ____   _____    ____    __| _/  /   _____/__ ___/ ____\/ ____\___________|__| ____    ____  
+//  |     ___/  |  \_  __ \_/ __ \   |     ___/\__  \ |  |/    \  \__  \  /    \  / __ |   \_____  \|  |  \   __\\   __\/ __ \_  __ \  |/    \  / ___\ 
+//  |    |   |  |  /|  | \/\  ___/   |    |     / __ \|  |   |  \  / __ \|   |  \/ /_/ |   /        \  |  /|  |   |  | \  ___/|  | \/  |   |  \/ /_/  >
+//  |____|   |____/ |__|    \___  >  |____|    (____  /__|___|  / (____  /___|  /\____ |  /_______  /____/ |__|   |__|  \___  >__|  |__|___|  /\___  / 
+//                              \/                  \/        \/       \/     \/      \/          \/                        \/              \//_____/  
+// ");
+//             Console.WriteLine("Your goal is to escape the castle while rescuing the queen while encountering a lot of enemies . GLHF :)");
+//             Console.WriteLine("\" A \" \n");
 
 
-        //     // User Input (Name)
-        //     MainCharacter player = new MainCharacter();
-        //     player.NameAssignment();
-        //     player.StatCheck();
+//             // User Input (Name)
+//             MainCharacter player = new MainCharacter();
+//             player.NameAssignment();
+//             player.StatCheck();
 
-        //     Console.WriteLine(" So before we begin, lets have a tutorial about the combat system in this game.");
+//             Console.WriteLine(" So before we begin, lets have a tutorial about the combat system in this game.");
 
-        //     #endregion
+//             #endregion
 
-
-
-        //     #region Battle Tutorial Phase? ig
+//             #region Battle Tutorial Phase? ig
         
-        //     Console.WriteLine("Tutorial Stage");
+//             Console.WriteLine("Tutorial Stage");
 
-        //     Console.WriteLine("As of now , you can only do basic attacks so ye pain. ");
-        //     Console.WriteLine("Anyway, this battle system here is {turn-based} since console app moment. ");
-        //     Console.WriteLine("Usually you will have the first to use the turn then it's the enemy's turn");
-        //     Console.WriteLine("The controls during battle are: \n");
+//             Console.WriteLine("As of now , you can only do basic attacks so ye pain. ");
+//             Console.WriteLine("Anyway, this battle system here is {turn-based} since console app moment. ");
+//             Console.WriteLine("Usually you will have the first to use the turn then it's the enemy's turn");
+//             Console.WriteLine("The controls during battle are: \n");
 
-        //     Console.WriteLine("[1] for basic attack   ");
-        //     Console.WriteLine("[2] for first skill    ");
-        //     Console.WriteLine("[3] for ultimate skill \n");
-        //     Console.WriteLine("[Q] for stat check     ");
-        //     Console.WriteLine("[E] for using the equipped item   ");
-        //     Console.WriteLine("[H] for help panel   ");
+//             Console.WriteLine("[1] for basic attack   ");
+//             Console.WriteLine("[2] for first skill    ");
+//             Console.WriteLine("[3] for ultimate skill \n");
+//             Console.WriteLine("[Q] for stat check     ");
+//             Console.WriteLine("[E] for using the equipped item   ");
+//             Console.WriteLine("[H] for help panel   ");
 
-        //     Console.WriteLine("BTW, you don't need to press Enter during the battle, since the developer will suffer just for good user experience LMAO");
-        //     Console.WriteLine("Anyway, before you encounter an enemy later");
-        //     Console.WriteLine("You are only enable to do a basic attack");
-        //     Console.WriteLine("I hope you should remember that");
+//             Console.WriteLine("BTW, you don't need to press Enter during the battle, since the developer will suffer just for good user experience LMAO");
+//             Console.WriteLine("Anyway, before you encounter an enemy later");
+//             Console.WriteLine("You are only enable to do a basic attack");
+//             Console.WriteLine("I hope you should remember that");
 
-        //     Console.WriteLine("SO are you ready to suffer? ");
-        //     Console.WriteLine("Press [Enter] to continue");
+//             Console.WriteLine("SO are you ready to suffer? ");
+//             Console.WriteLine("Press [Enter] to continue");
 
 
-        //     do {
-        //         if (Console.ReadKey(true).Key == ConsoleKey.Enter) {
-        //             break;
-        //     }       
-        //     } while (! Console.KeyAvailable);
+//             do {
+//                 if (Console.ReadKey(true).Key == ConsoleKey.Enter) {
+//                     break;
+//             }       
+//             } while (! Console.KeyAvailable);
 
-        //     Enemy mini_slime = new Enemy();
-        //     mini_slime.SetUp("Small Slime","A small goofy ah creature",40,40,0,7,0,0,2);
+//             Enemy mini_slime = new Enemy();
+//             mini_slime.SetUp("Small Slime","A small goofy ah creature",40,40,0,7,0,0,2);
             
-        //     if(BattleInterface(player,mini_slime) == false){
-        //         Console.WriteLine("wha uoghhhhhh");
-        //     } else {
-        //         Console.WriteLine("Congrats you beat the tutorial stage");
-        //     }
+//             if(BattleInterface(player,mini_slime) == false){
+//                 Console.WriteLine("wha uoghhhhhh");
+//             } else {
+//                 Console.WriteLine("Congrats you beat the tutorial stage");
+//             }
 
             
-        //     #endregion
+//             #endregion
 
             #region Start
 
-            Floor floor1 = new Floor();
-            floor1.GenerateFloor(6);
-            Console.WriteLine(string.Join(", ", floor1.floor_rooms));
+             Console.WriteLine(@"
+ .----------------.  .----------------.  .----------------.  .----------------.  .----------------.    .----------------. 
+| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |  | .--------------. |
+| |  _________   | || |   _____      | || |     ____     | || |     ____     | || |  _______     | |  | |     __       | |
+| | |_   ___  |  | || |  |_   _|     | || |   .'    `.   | || |   .'    `.   | || | |_   __ \    | |  | |    /  |      | |
+| |   | |_  \_|  | || |    | |       | || |  /  .--.  \  | || |  /  .--.  \  | || |   | |__) |   | |  | |    `| |      | |
+| |   |  _|      | || |    | |   _   | || |  | |    | |  | || |  | |    | |  | || |   |  __ /    | |  | |     | |      | |
+| |  _| |_       | || |   _| |__/ |  | || |  \  `--'  /  | || |  \  `--'  /  | || |  _| |  \ \_  | |  | |    _| |_     | |
+| | |_____|      | || |  |________|  | || |   `.____.'   | || |   `.____.'   | || | |____| |___| | |  | |   |_____|    | |
+| |              | || |              | || |              | || |              | || |              | |  | |              | |
+| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |  | '--------------' |
+ '----------------'  '----------------'  '----------------'  '----------------'  '----------------'    '----------------' 
+");
 
+            Floor floor1 = new Floor(1);
+            
+            Console.WriteLine(string.Join(", ", floor1.floor_rooms));
+            floor1.Explore();
 
             #endregion
 

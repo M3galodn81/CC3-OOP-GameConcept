@@ -3,18 +3,16 @@ namespace TowerGame{
         public int current_floor_level;
         public int floor;
         public int[] floor_rooms = new int[6]; 
+        public List<Room> play_rooms = new List<Room>();
         
-        // 1 for safe
+        // 1 for safehouse
         // 2 for normal
-        // 3 for danger
-        // 4 for threat
+        // 3 for elite
+        // 4 for boss
 
-        public void GenerateFloor(int floor_number){
+        public Floor(int floor_number){
             Random rnd = new Random();
             floor = floor_number;
-
-            
-
 
             switch (floor_number){
                 
@@ -110,7 +108,6 @@ namespace TowerGame{
                     }
                     break;
 
-
                 case 4:
                     floor_rooms[0] = rnd.Next(1,2);
                     floor_rooms[2] = rnd.Next(1,2);
@@ -145,7 +142,6 @@ namespace TowerGame{
 
                     break;
 
-                    
                 case 5:
 
                     floor_rooms[0] = 2;
@@ -170,6 +166,7 @@ namespace TowerGame{
                     }
                     
                     break;
+
                 case 6:
                     floor_rooms = new int[4] ;
 
@@ -179,9 +176,219 @@ namespace TowerGame{
                     floor_rooms[3] = 4;
 
                     break;
+            
+            }
+        }
+    
+        public void Explore(){
+           foreach(int i in floor_rooms){
+                play_rooms.Add(Room.CreateRoom(floor,i));
+            }
+        }
+    }
+
+    public class Room {
+
+        public int FloorLevel { get; private set; }
+        public int RoomType { get; private set; }
+
+        public Room(int floor_level, int room_type) {
+            FloorLevel = floor_level;
+            RoomType = room_type;
+        }
+
+        public static Room CreateRoom(int floor_level, int room_type) {
+            switch (room_type) {
+                case 1:
+                    return new Safehouse(floor_level, room_type);
+                case 2:
+                    return new EnemyRoom(floor_level, room_type);
+                case 3:
+                    return new EliteRoom(floor_level, room_type);
+                case 4:
+                    return new BossRoom(floor_level, room_type);
+                default:
+                    throw new ArgumentException("Invalid room type");
+            }
+        }
+    }
+
+    public class Safehouse : Room {
+        public Safehouse(int floor_level, int room_type) : base(floor_level, room_type) {
+            // Safehouse-specific initialization
+            Random rnd = new Random();
+            Console.WriteLine("As you enter the room you see some supplies. ");
+
+            switch (floor_level){
+                case 1:
+                    
+                    
+                    
+
+                    Boolean quitLoop = false;
+                    do {
+                        switch (Console.ReadKey(true).Key){
+                            case ConsoleKey.D1:
+
+
+                                break;
+                            case ConsoleKey.D2:
+                                break;
+                            case ConsoleKey.D3:
+                                break;
+                            case ConsoleKey.Q:
+                                break;
+                            case ConsoleKey.H:
+                                break;
+                            case ConsoleKey.X:
+                                break;
+                        }   
+                    } while (! Console.KeyAvailable && !quitLoop);
+
+                    break;
+
+                case 2:
+
+                    quitLoop = false;
+                    do {
+                        switch (Console.ReadKey(true).Key){
+                            case ConsoleKey.D1:
+                                break;
+                            case ConsoleKey.D2:
+                                break;
+                            case ConsoleKey.D3:
+                                break;
+                            case ConsoleKey.Q:
+                                break;
+                            case ConsoleKey.H:
+                                break;
+                            case ConsoleKey.X:
+                                break;
+                        }   
+                    } while (! Console.KeyAvailable && !quitLoop);
+
+                    break;
+
+                case 3:
+
+                    quitLoop = false;
+                    do {
+                        switch (Console.ReadKey(true).Key){
+                            case ConsoleKey.D1:
+                                break;
+                            case ConsoleKey.D2:
+                                break;
+                            case ConsoleKey.D3:
+                                break;
+                            case ConsoleKey.Q:
+                                break;
+                            case ConsoleKey.H:
+                                break;
+                            case ConsoleKey.X:
+                                break;
+                        }   
+                    } while (! Console.KeyAvailable && !quitLoop);
+
+                    break;
+
+                case 4:
+
+                    quitLoop = false;
+                    do {
+                        switch (Console.ReadKey(true).Key){
+                            case ConsoleKey.D1:
+                                break;
+                            case ConsoleKey.D2:
+                                break;
+                            case ConsoleKey.D3:
+                                break;
+                            case ConsoleKey.Q:
+                                break;
+                            case ConsoleKey.H:
+                                break;
+                            case ConsoleKey.X:
+                                break;
+                        }   
+                    } while (! Console.KeyAvailable && !quitLoop);
+
+                    break;
+
+
+                case 5:
+
+                    quitLoop = false;
+                    do {
+                        switch (Console.ReadKey(true).Key){
+                            case ConsoleKey.D1:
+                                break;
+                            case ConsoleKey.D2:
+                                break;
+                            case ConsoleKey.D3:
+                                break;
+                            case ConsoleKey.Q:
+                                break;
+                            case ConsoleKey.H:
+                                break;
+                            case ConsoleKey.X:
+                                break;
+                        }   
+                    } while (! Console.KeyAvailable && !quitLoop);
+
+                    break;
+
+                case 6:
+
+                    quitLoop = false;
+                    do {
+                        switch (Console.ReadKey(true).Key){
+                            case ConsoleKey.D1:
+                                break;
+                            case ConsoleKey.D2:
+                                break;
+                            case ConsoleKey.D3:
+                                break;
+                            case ConsoleKey.Q:
+                                break;
+                            case ConsoleKey.H:
+                                break;
+                            case ConsoleKey.X:
+                                break;
+                        }   
+                    } while (! Console.KeyAvailable && !quitLoop);
+
+                    break;
+
+                default:
+                    break;
             }
 
+
         }
-        
     }
+
+    public class EnemyRoom : Room {
+        public EnemyRoom(int floor_level, int room_type) : base(floor_level, room_type) {
+            // Enemy-specific initialization
+
+            Console.WriteLine("Normal Enemy");
+
+        }
+    }
+
+    public class EliteRoom : Room {
+        public EliteRoom(int floor_level, int room_type) : base(floor_level, room_type) {
+            // Elite-specific initialization
+
+            Console.WriteLine("Elite Enemy");
+        }
+    }
+
+    public class BossRoom : Room {
+        public BossRoom(int floor_level, int room_type) : base(floor_level, room_type) {
+            // Boss-specific initialization
+
+            Console.WriteLine("Boss Enemy");
+        }
+    }
+
 }

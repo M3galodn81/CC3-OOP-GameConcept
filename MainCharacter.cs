@@ -27,6 +27,7 @@ namespace TowerGame {
 
         public int basic_damage_type = 1; // 1 for phys ,2  for magic
         public Item equipped_item = null;
+        public Weapon equipped_weapon = null;
 
         public Skill first_skill = null;
         public Skill second_skill = null;
@@ -50,10 +51,15 @@ namespace TowerGame {
         public void StatCheck(){
             double hp_display = Math.Floor(hp);
             string item_display = "No Item";
+            string weapon_display = "No Weapon";
             string skill_display = "No Skill Learned";
 
             if (equipped_item != null){
                 item_display = equipped_item.name;
+            }
+
+            if (equipped_weapon != null){
+                item_display = equipped_weapon.name;
             }
 
             if (first_skill != null){
@@ -70,6 +76,8 @@ namespace TowerGame {
             Console.WriteLine("| Defense (Magic)        : " + magic_defense + " |");
             Console.WriteLine("============================================================");
             Console.WriteLine("| Equipped Item          : " + item_display + " |");
+            Console.WriteLine("| Equipped Weapon        : " + weapon_display + " |");
+            
             Console.WriteLine("| First Skill            : " + skill_display + " |");
             Console.WriteLine("============================================================\n");
 
@@ -99,6 +107,38 @@ namespace TowerGame {
                             break;
                         case "X":
                             Console.WriteLine("You keep your " + equipped_item.name  +".");
+                            break;
+                        default:
+                            Console.WriteLine("Use capital letters. [E] and [X] are the only options here.");
+                            continue;
+                    }
+                    break;
+                }
+            }
+        }
+
+
+        public void pickWeapon(Weapon weapon){
+            if (equipped_weapon == null) {
+                equipped_weapon = weapon;
+            }  else {
+                // prompts the user to decides if they what to change their equipped weapon;
+
+                Console.WriteLine("You can only hold 1 weapon.");
+                Console.WriteLine("You can either keep your " + equipped_weapon.name + " or pick the " + weapon.name + ". " ); 
+                
+                while (true){
+                    Console.WriteLine("Type [E] to equipped the " + weapon.name);
+                    Console.WriteLine("Type [X] to keep your " + equipped_weapon.name);
+
+                    string user_input = Console.ReadLine();
+                    switch (user_input){
+                        case "E":
+                            Console.WriteLine("You equipped " + weapon.name  +".");
+                            equipped_weapon = weapon;
+                            break;
+                        case "X":
+                            Console.WriteLine("You keep your " + equipped_weapon.name  +".");
                             break;
                         default:
                             Console.WriteLine("Use capital letters. [E] and [X] are the only options here.");
