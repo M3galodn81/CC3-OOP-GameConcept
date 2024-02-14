@@ -22,8 +22,8 @@ namespace TowerGame{
                 case 1:
 
                     id_number = 1;
-                    name = "";
-                    description = "";
+                    name = "Rusty Knife";
+                    description = "An old knife in the castle that might indicates that this castle is abandoned for a long period of time";
 
                     attack_type = 1;
 
@@ -40,13 +40,13 @@ namespace TowerGame{
 
                 case 2:
 
-                    id_number = 1;
-                    name = "";
-                    description = "";
+                    id_number = 2;
+                    name = "Sharp Knife";
+                    description = "A knife that might used by another creature.";
 
                     attack_type = 1;
 
-                    attack_amount_buff = 20;
+                    attack_amount_buff = 30;
                     attack_percent_buff = 0;
 
                     defense_amount_buff = 0;
@@ -59,14 +59,14 @@ namespace TowerGame{
 
                 case 3:
                     
-                    id_number = 1;
-                    name = "";
-                    description = "";
+                    id_number = 3;
+                    name = "Dull Dagger";
+                    description = "A old dagger with an old emblem.";
 
                     attack_type = 1;
 
                     attack_amount_buff = 20;
-                    attack_percent_buff = 0;
+                    attack_percent_buff = 2.5d;
 
                     defense_amount_buff = 0;
                     defense_percent_buff = 0;
@@ -94,7 +94,6 @@ namespace TowerGame{
                     hp_percent_buff = 0;
 
                     break;
-
 
                 case 5:
 
@@ -214,13 +213,13 @@ namespace TowerGame{
                 // MAgic
                 case 11:
                     
-                    id_number = 1;
-                    name = "";
-                    description = "";
+                    id_number = 11;
+                    name = "Old Page of Ember";
+                    description = "This page lets you cast basic magic.";
 
-                    attack_type = 1;
+                    attack_type = 2;
 
-                    attack_amount_buff = 20;
+                    attack_amount_buff = 25;
                     attack_percent_buff = 0;
 
                     defense_amount_buff = 0;
@@ -233,13 +232,13 @@ namespace TowerGame{
 
                 case 12:
                     
-                    id_number = 1;
-                    name = "";
-                    description = "";
+                    id_number = 12;
+                    name = "Blue-Flame Candle";
+                    description = "A candle with a bluish flame.";
 
-                    attack_type = 1;
+                    attack_type = 2;
 
-                    attack_amount_buff = 20;
+                    attack_amount_buff = 35;
                     attack_percent_buff = 0;
 
                     defense_amount_buff = 0;
@@ -253,16 +252,16 @@ namespace TowerGame{
                 case 13:
                     
                     id_number = 1;
-                    name = "";
-                    description = "";
+                    name = "Cloud Orb";
+                    description = "A decent magic weapon with small defense capabilites ";
 
-                    attack_type = 1;
+                    attack_type = 2;
 
-                    attack_amount_buff = 20;
+                    attack_amount_buff = 50;
                     attack_percent_buff = 0;
 
                     defense_amount_buff = 0;
-                    defense_percent_buff = 0;
+                    defense_percent_buff = 5;
 
                     hp_amount_buff = 0;
                     hp_percent_buff = 0;
@@ -405,7 +404,7 @@ namespace TowerGame{
                 //Range
                 case 21:
 
-                    id_number = 1;
+                    id_number = 21;
                     name = "";
                     description = "";
 
