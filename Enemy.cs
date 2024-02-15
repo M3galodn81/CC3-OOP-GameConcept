@@ -84,6 +84,78 @@ namespace TowerGame{
             
             basic_attack_type = basic;
         }
+    
+        public void RandomGen(int floor_level, int danger_level){
+            Random rnd = new Random();
+            switch (danger_level){
+                case 1:
+                    switch (floor_level){
+
+                        case 1: //90 percent Skeleton / 10 ghost
+
+                            int rE = rnd.Next(1,11);
+                            if (rE != 10){
+                                int HT = rnd.Next(1,3);
+                                if (HT == 1){
+                                    SetUp("Skeleton Archer", "A skeleton that knows how to use a bow",100,100,20,0,10,0,1);
+                                } else {
+                                    SetUp("Skeleton Caster", "A skeleton that knows how to use magic",100,100,0,20,10,10,2);
+                                }
+                            } else {
+                                SetUp("Ghost","A foe that cannot be hit with physical attacks",100,100,0,10,0,10,2);
+                            }
+                            break;
+
+                        case 2:
+                            rE = rnd.Next(1,11);
+                            if (rE <= 5){
+                                int HT = rnd.Next(1,3);
+                                if (HT == 1){
+                                    SetUp("Skeleton Archer", "A skeleton that knows how to use a bow",200,200,30,0,20,0,1);
+                                } else {
+                                    SetUp("Skeleton Caster", "A skeleton that knows how to use magic",250,200,0,30,10,20,2);
+                                }
+                            } else if (rE >= 6 && rE != 10){
+                                 int HT = rnd.Next(1,3);
+                                if (HT == 1){
+                                    SetUp("Goblin Slinger", "A goblin that knows how to use a slingshot",300,200,30,0,20,0,1);
+                                } else {
+                                    SetUp("Goblin Caster", "A goblin that knows how to use magic",300,200,0,40,10,20,2);
+                                }
+                            
+                            } else {
+                                SetUp("Ghost","A foe that cannot be hit with physical attacks",200,200,0,40,0,0,2);
+                            }
+                            break;
+
+                        case 3:
+                            break;
+
+                        case 4:
+                            break;
+
+                        case 5:
+                            break;
+
+                        case 6:
+                            break;
+
+                    }
+                    // SetUp("Normal Enemy", "A regular foe", 50 + floor_level * 10, 100 + floor_level * 20, 20 + floor_level * 5, 10 + floor_level * 3, 5 + floor_level, 3 + floor_level, rnd.Next(1, 5));
+                    break;
+                case 2:
+                    if (this is EliteEnemy eliteEnemy) {
+                        // eliteEnemy.first_skill = new Skill("Fireball", "Launches a powerful fireball", 50 + floor_level * 10, 1);
+                    }
+                    SetUp("Elite Enemy", "A formidable opponent", 100 + floor_level * 15, 150 + floor_level * 30, 30 + floor_level * 8, 20 + floor_level * 6, 10 + floor_level * 2, 5 + floor_level * 2, rnd.Next(1, 5));
+                    break;
+                case 3:
+                    SetUp("Normal Enemy", "A regular foe", 50 + floor_level * 10, 100 + floor_level * 20, 20 + floor_level * 5, 10 + floor_level * 3, 5 + floor_level, 3 + floor_level, rnd.Next(1, 5));
+                    break;
+                    }
+        }
+    
+    
     }
 
     public class EliteEnemy : Enemy{

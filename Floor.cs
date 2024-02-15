@@ -1,3 +1,5 @@
+using System.Drawing;
+
 namespace TowerGame{
     public class Floor{
         public int current_floor_level;
@@ -180,9 +182,9 @@ namespace TowerGame{
             }
         }
     
-        public void Explore(){
+        public void Explore(MainCharacter player){
            foreach(int i in floor_rooms){
-                play_rooms.Add(Room.CreateRoom(floor,i));
+                play_rooms.Add(Room.CreateRoom(floor,i,player));
             }
         }
     }
@@ -191,22 +193,24 @@ namespace TowerGame{
 
         public int FloorLevel { get; private set; }
         public int RoomType { get; private set; }
+        public MainCharacter Player { get; private set; }
 
-        public Room(int floor_level, int room_type) {
+        public Room(int floor_level, int room_type, MainCharacter player) {
             FloorLevel = floor_level;
             RoomType = room_type;
+            Player = player;
         }
 
-        public static Room CreateRoom(int floor_level, int room_type) {
+        public static Room CreateRoom(int floor_level, int room_type, MainCharacter player) {
             switch (room_type) {
                 case 1:
-                    return new Safehouse(floor_level, room_type);
+                    return new Safehouse(floor_level, room_type, player);
                 case 2:
-                    return new EnemyRoom(floor_level, room_type);
+                    return new EnemyRoom(floor_level, room_type, player);
                 case 3:
-                    return new EliteRoom(floor_level, room_type);
+                    return new EliteRoom(floor_level, room_type, player);
                 case 4:
-                    return new BossRoom(floor_level, room_type);
+                    return new BossRoom(floor_level, room_type, player);
                 default:
                     throw new ArgumentException("Invalid room type");
             }
@@ -214,33 +218,72 @@ namespace TowerGame{
     }
 
     public class Safehouse : Room {
-        public Safehouse(int floor_level, int room_type) : base(floor_level, room_type) {
+        public Safehouse(int floor_level, int room_type, MainCharacter player) : base(floor_level, room_type, player) {
             // Safehouse-specific initialization
             Random rnd = new Random();
             Console.WriteLine("As you enter the room you see some supplies. ");
 
             switch (floor_level){
                 case 1:
-                    
-                    
-                    
+                     
+                    Weapon w1 = new Weapon(1);
+                    Weapon w2 = new Weapon(11);
+                    Weapon w3 = new Weapon(21);
+
+                    Console.WriteLine("You saw [" + w1.name + "] lying on the floor.");
+                     Thread.Sleep(2000);
+                    Console.WriteLine("You saw [" + w2.name + "] on the table. ");
+                     Thread.Sleep(2000);
+                    Console.WriteLine("You saw [" + w3.name + "] near the window.");
+                     Thread.Sleep(2000);
+
+                    Console.WriteLine("Press [1] if you want [" + w1.name + "]");
+                    Console.WriteLine("Press [2] if you want [" + w2.name + "]");
+                    Console.WriteLine("Press [3] if you want [" + w3.name + "]\n");
+
+                    Console.WriteLine("Press [Q] if you want know the stats of the supplies");
+                    Console.WriteLine("Press [X] if you want to leave the room\n");
+
+                    Console.WriteLine("You can press [H] for help");
 
                     Boolean quitLoop = false;
                     do {
                         switch (Console.ReadKey(true).Key){
                             case ConsoleKey.D1:
-
-
+                                Console.WriteLine(player.player_name + " picked the " + w1.name);
+                                player.pickWeapon(w1);
+                                quitLoop = true;
                                 break;
                             case ConsoleKey.D2:
+                                Console.WriteLine(player.player_name + " picked the " + w2.name);
+                                player.pickWeapon(w2);
+                                quitLoop = true;
                                 break;
                             case ConsoleKey.D3:
+                                Console.WriteLine(player.player_name + " picked the " + w3.name);
+                                player.pickWeapon(w3);
+                                quitLoop = true;
                                 break;
                             case ConsoleKey.Q:
+                                w1.WeaponCheck();
+                                w2.WeaponCheck();
+                                w3.WeaponCheck();
                                 break;
                             case ConsoleKey.H:
+                                Console.WriteLine("Press [1] if you want [" + w1.name + "]");
+                                Console.WriteLine("Press [2] if you want [" + w2.name + "]");
+                                Console.WriteLine("Press [3] if you want [" + w3.name + "]\n");
+
+                                Console.WriteLine("Press [Q] if you want know the stats of the supplies");
+                                Console.WriteLine("Press [X] if you want to leave the room\n");
+
+                                Console.WriteLine("You can press [H] for help (You just pressed H)");
+
                                 break;
                             case ConsoleKey.X:
+
+                                Console.WriteLine("You picked nothing and leave the room");
+                                quitLoop = true;
                                 break;
                         }   
                     } while (! Console.KeyAvailable && !quitLoop);
@@ -312,7 +355,6 @@ namespace TowerGame{
                     } while (! Console.KeyAvailable && !quitLoop);
 
                     break;
-
 
                 case 5:
 
@@ -359,6 +401,13 @@ namespace TowerGame{
                     break;
 
                 default:
+                    Console.Clear();
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("ERROR");
+                    Thread.Sleep(5000);
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Clear();
+                    Environment.Exit(4); // error pain
                     break;
             }
 
@@ -367,16 +416,50 @@ namespace TowerGame{
     }
 
     public class EnemyRoom : Room {
-        public EnemyRoom(int floor_level, int room_type) : base(floor_level, room_type) {
+        public EnemyRoom(int floor_level, int room_type, MainCharacter player) : base(floor_level, room_type, player) {
             // Enemy-specific initialization
 
-            Console.WriteLine("Normal Enemy");
+            Console.WriteLine("As you gently opened the door. ");
 
+
+            switch (floor_level){
+                case 1:
+                    Enemy enemy = new Enemy();
+                    enemy.RandomGen(floor_level,1);
+
+                    Program.BattleInterface(player,enemy);
+                    break;
+
+                case 2:
+                    break;
+                
+                case 3:
+                    break;
+
+                case 4:
+                    break;
+
+                case 5:
+                    break;
+
+                case 6:
+                    break;
+
+                default:
+                    Console.Clear();
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("ERROR");
+                    Thread.Sleep(5000);
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Clear();
+                    Environment.Exit(4); // error pain
+                    break;
+            }
         }
     }
 
     public class EliteRoom : Room {
-        public EliteRoom(int floor_level, int room_type) : base(floor_level, room_type) {
+        public EliteRoom(int floor_level, int room_type, MainCharacter player) : base(floor_level, room_type, player) {
             // Elite-specific initialization
 
             Console.WriteLine("Elite Enemy");
@@ -384,10 +467,11 @@ namespace TowerGame{
     }
 
     public class BossRoom : Room {
-        public BossRoom(int floor_level, int room_type) : base(floor_level, room_type) {
+        public BossRoom(int floor_level, int room_type, MainCharacter player) : base(floor_level, room_type, player) {
             // Boss-specific initialization
-
+            
             Console.WriteLine("Boss Enemy");
+            
         }
     }
 

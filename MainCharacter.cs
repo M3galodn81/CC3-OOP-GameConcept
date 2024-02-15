@@ -22,8 +22,8 @@ namespace TowerGame {
         public int physical_attack = 20;
         public int magic_attack = 0;
 
-        public int defense = 0;
-        public int magic_defense = 0;
+        public int defense = 20;
+        public int magic_defense = 20;
 
         public int basic_damage_type = 1; // 1 for phys ,2  for magic
         public Item equipped_item = null;
@@ -121,6 +121,28 @@ namespace TowerGame {
         public void pickWeapon(Weapon weapon){
             if (equipped_weapon == null) {
                 equipped_weapon = weapon;
+
+                basic_damage_type = equipped_weapon.attack_type;
+
+                magic_attack    += equipped_weapon.attack_amount_buff;
+                physical_attack += equipped_weapon.attack_amount_buff;
+
+                magic_attack = magic_attack * Convert.ToInt32(1 + equipped_weapon.attack_percent_buff);
+                physical_attack = physical_attack * Convert.ToInt32(1 + equipped_weapon.attack_percent_buff);
+
+                magic_defense    += equipped_weapon.defense_amount_buff;
+                defense += equipped_weapon.defense_amount_buff;
+
+                magic_defense = magic_defense * Convert.ToInt32(1 + equipped_weapon.defense_percent_buff);
+                defense = defense * Convert.ToInt32(1 + equipped_weapon.defense_percent_buff);
+
+                hp_limit += equipped_weapon.hp_amount_buff;
+                hp += equipped_weapon.hp_amount_buff;
+                
+
+                hp_limit = hp_limit * Convert.ToInt32(1 + equipped_weapon.hp_percent_buff);
+
+                hpCheck();
             }  else {
                 // prompts the user to decides if they what to change their equipped weapon;
 
@@ -135,7 +157,53 @@ namespace TowerGame {
                     switch (user_input){
                         case "E":
                             Console.WriteLine("You equipped " + weapon.name  +".");
-                            equipped_weapon = weapon;
+
+                            basic_damage_type = equipped_weapon.attack_type;
+
+                            magic_attack    -= equipped_weapon.attack_amount_buff;
+                            physical_attack -= equipped_weapon.attack_amount_buff;
+
+                            magic_attack = magic_attack / Convert.ToInt32(1 + equipped_weapon.attack_percent_buff);
+                            physical_attack = physical_attack / Convert.ToInt32(1 + equipped_weapon.attack_percent_buff);
+
+                            magic_defense    -= equipped_weapon.defense_amount_buff;
+                            defense -= equipped_weapon.defense_amount_buff;
+
+                            magic_defense = magic_defense / Convert.ToInt32(1 + equipped_weapon.defense_percent_buff);
+                            defense = defense / Convert.ToInt32(1 + equipped_weapon.defense_percent_buff);
+
+                            hp_limit -= equipped_weapon.hp_amount_buff;
+                            hp -= equipped_weapon.hp_amount_buff;
+                            
+
+                            hp_limit = hp_limit * Convert.ToInt32(1 + equipped_weapon.hp_percent_buff);
+
+
+                                equipped_weapon = weapon;
+
+                            basic_damage_type = equipped_weapon.attack_type;
+
+                            magic_attack    += equipped_weapon.attack_amount_buff;
+                            physical_attack += equipped_weapon.attack_amount_buff;
+
+                            magic_attack = magic_attack * Convert.ToInt32(1 + equipped_weapon.attack_percent_buff);
+                            physical_attack = physical_attack * Convert.ToInt32(1 + equipped_weapon.attack_percent_buff);
+
+                            magic_defense    += equipped_weapon.defense_amount_buff;
+                            defense += equipped_weapon.defense_amount_buff;
+
+                            magic_defense = magic_defense * Convert.ToInt32(1 + equipped_weapon.defense_percent_buff);
+                            defense = defense * Convert.ToInt32(1 + equipped_weapon.defense_percent_buff);
+
+                            hp_limit += equipped_weapon.hp_amount_buff;
+                            hp += equipped_weapon.hp_amount_buff;
+                            
+
+                            hp_limit = hp_limit * Convert.ToInt32(1 + equipped_weapon.hp_percent_buff);
+
+                            hpCheck();
+
+
                             break;
                         case "X":
                             Console.WriteLine("You keep your " + equipped_weapon.name  +".");
