@@ -13,13 +13,13 @@ Normal
 Elite 
 Boss (every last chamber of the floor)
 
-### Character Progression
+### Character Progression (Removed)
 
 Dagger > Sword > Spear
 Scroll > Wand > Magic Weapon
 Bow / Arrow > Crossbow > Gun > Rocket Launcher
 
-### Statuses
+### Statuses (will be not implemented until i have time)
 
 Poison              - Minus some HP after turn
 Regeneration        - + some HP after turn

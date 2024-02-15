@@ -165,7 +165,10 @@ namespace TowerGame
                 } 
                 return true;
             } else {
-
+                Console.Clear();
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Clear();
                 Console.WriteLine(@"
  ██████   █████  ███    ███ ███████      ██████  ██    ██ ███████ ██████  
 ██       ██   ██ ████  ████ ██          ██    ██ ██    ██ ██      ██   ██ 
@@ -216,6 +219,9 @@ namespace TowerGame
 
         //     #endregion
 
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
             #region Start of the Game
             // Beginning Script
@@ -305,6 +311,15 @@ __________                       __________        .__                          
             player.hp = player.hp_limit;
             Console.WriteLine(string.Join(", ", floor1.floor_rooms));
             floor1.Explore(player);
+
+            Floor floor2 = new Floor(2);
+            player.hp = player.hp_limit;
+            floor2.Explore(player);
+
+            Floor floor3 = new Floor(3);
+            player.hp = player.hp_limit;
+            floor3.Explore(player);
+
 
             #endregion
 

@@ -420,29 +420,123 @@ namespace TowerGame{
             // Enemy-specific initialization
 
             Console.WriteLine("As you gently opened the door. ");
-
+            Thread.Sleep(500);
 
             switch (floor_level){
                 case 1:
                     Enemy enemy = new Enemy();
                     enemy.RandomGen(floor_level,1);
 
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
                     Program.BattleInterface(player,enemy);
                     break;
 
                 case 2:
+
+                    enemy = new Enemy();
+                    enemy.RandomGen(floor_level,1);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
                     break;
+                    
                 
                 case 3:
+                    enemy = new Enemy();
+                    enemy.RandomGen(floor_level,1);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
                     break;
 
                 case 4:
+                    enemy = new Enemy();
+                    enemy.RandomGen(floor_level,1);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
                     break;
 
                 case 5:
+                    enemy = new Enemy();
+                    enemy.RandomGen(floor_level,1);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
                     break;
 
                 case 6:
+                    enemy = new Enemy();
+                    enemy.RandomGen(floor_level,1);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
                     break;
 
                 default:
@@ -460,9 +554,136 @@ namespace TowerGame{
 
     public class EliteRoom : Room {
         public EliteRoom(int floor_level, int room_type, MainCharacter player) : base(floor_level, room_type, player) {
-            // Elite-specific initialization
+            Console.WriteLine("You hear something and you decided to find the source but ... ");
+            Thread.Sleep(500);
 
-            Console.WriteLine("Elite Enemy");
+            switch (floor_level){
+                case 1:
+                    EliteEnemy enemy = new EliteEnemy();
+                    enemy.RandomGen(floor_level,2);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
+                    break;
+
+                case 2:
+
+                    enemy = new EliteEnemy();
+                    enemy.RandomGen(floor_level,2);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
+                    break;
+                    
+                
+                case 3:
+                    enemy = new EliteEnemy();
+                    enemy.RandomGen(floor_level,2);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
+                    break;
+
+                case 4:
+                    enemy = new EliteEnemy();
+                    enemy.RandomGen(floor_level,2);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
+                    break;
+
+                case 5:
+                    enemy = new EliteEnemy();
+                    enemy.RandomGen(floor_level,2);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
+                    break;
+
+                case 6:
+                    enemy = new EliteEnemy();
+                    enemy.RandomGen(floor_level,2);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
+                    break;
+
+                default:
+                    Console.Clear();
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("ERROR");
+                    Thread.Sleep(5000);
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Clear();
+                    Environment.Exit(4); // error pain
+                    break;
+            }
         }
     }
 
@@ -470,8 +691,156 @@ namespace TowerGame{
         public BossRoom(int floor_level, int room_type, MainCharacter player) : base(floor_level, room_type, player) {
             // Boss-specific initialization
             
-            Console.WriteLine("Boss Enemy");
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Thread.Sleep(2500); 
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Thread.Sleep(2500); 
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Clear();
             
+            switch (floor_level){
+                case 1:
+                    EliteEnemy enemy = new EliteEnemy();
+                    enemy.RandomGen(floor_level,3);
+
+
+                    Console.WriteLine("You are alone yet ...");
+                    Thread.Sleep(2500); Console.Clear();
+                    Console.WriteLine("you are still have courage to enter this castle ...");
+                    Thread.Sleep(2500); Console.Clear();
+                    Console.WriteLine("You must know that ... ");
+                    Thread.Sleep(2500); Console.Clear();
+                    Console.WriteLine("Entering here is a MISTAKE ... ");
+                    Thread.Sleep(2500); Console.Clear();
+
+                    Console.WriteLine(enemy.name + " want you to perish. ");
+                    Thread.Sleep(1500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
+                    break;
+
+                case 2:
+
+                    enemy = new EliteEnemy();
+                    enemy.RandomGen(floor_level,2);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
+                    break;
+                    
+                
+                case 3:
+                    enemy = new EliteEnemy();
+                    enemy.RandomGen(floor_level,2);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
+                    break;
+
+                case 4:
+                    enemy = new EliteEnemy();
+                    enemy.RandomGen(floor_level,2);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
+                    break;
+
+                case 5:
+                    enemy = new EliteEnemy();
+                    enemy.RandomGen(floor_level,2);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
+                    break;
+
+                case 6:
+                    enemy = new EliteEnemy();
+                    enemy.RandomGen(floor_level,2);
+
+                    Console.WriteLine("You saw a " + enemy.name);
+                    Thread.Sleep(500);
+
+                    Console.WriteLine(@"
+                                    _______  _______  _______  _______  _______ 
+                                    |    ___||_     _||     __||   |   ||_     _|
+                                    |    ___| _|   |_ |    |  ||       |  |   |  
+                                    |___|    |_______||_______||___|___|  |___|  
+                                             
+");
+                    Thread.Sleep(700);
+                    Console.Clear();
+                    Program.BattleInterface(player,enemy);
+                    break;
+
+                default:
+                    Console.Clear();
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("ERROR");
+                    Thread.Sleep(5000);
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Clear();
+                    Environment.Exit(4); // error pain
+                    break;
+            }
         }
     }
 
