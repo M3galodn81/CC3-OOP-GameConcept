@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic;
+
 namespace TowerGame{
 
     public class Skill {
@@ -90,10 +92,134 @@ namespace TowerGame{
             magic_defense_increase_percentage = magic_defense_increase_percentage_input;
         }
 
+        public void UseSkill(Enemy enemy){
+            // 1 for heal
+            // 2 for hp increase
+            // 3 for attack
+            // 4 for def
+            // 5 for magic res
+            int n = number_of_turns_in_effect;
+            
+                switch (skill_type){
+                    case 1:
+                        
+                        if (heal_percentage != 0){
+                            enemy.hp += Convert.ToInt32(heal_percentage / 100 * enemy.hp_limit);
+                        }
+                        enemy.hp += hp_increase_amount;
 
+                        if (enemy.hp >= enemy.hp_limit){
+                            enemy.hp = enemy.hp_limit; 
+                        }
 
-        public void UseSkill(){
+                        break;
 
+                    case 2:
+                        if (hp_increase_percentage != 0){
+                                enemy.hp_limit = Convert.ToInt32((hp_increase_percentage / 100 * enemy.hp_limit) + enemy.hp_limit);
+                        }
+                        enemy.hp_limit += hp_increase_amount;
+                        
+                        if (enemy.hp >= enemy.hp_limit){
+                            enemy.hp = enemy.hp_limit; 
+                        }
+                        break;
+
+                    case 3:
+                        enemy.basic_attack_type = attack_type;
+
+                        if (attack_increase_percentage != 0){
+                                    enemy.physical_attack = Convert.ToInt32((attack_increase_percentage / 100 * enemy.physical_attack) + enemy.physical_attack);
+                            }
+                        enemy.physical_attack += attack_increase_amount;
+
+                        if (attack_increase_percentage != 0){
+                                    enemy.magic_attack = Convert.ToInt32((attack_increase_percentage / 100 * enemy.magic_attack) + enemy.magic_attack);
+                            }
+                        enemy.magic_attack += attack_increase_amount;
+
+                        if (attack_percentage != 0){
+                            enemy.physical_attack = (attack_percentage / 100 * enemy.physical_attack) + enemy.physical_attack;
+                        }
+                        enemy.physical_attack += attack_amount;
+
+                        if (attack_percentage != 0){
+                            enemy.magic_attack = (attack_percentage / 100 * enemy.magic_attack) + enemy.magic_attack;
+                        }
+                        enemy.magic_attack += attack_amount;
+
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                }
+            
+        }
+
+        public void UseSkill(MainCharacter enemy){
+            // 1 for heal
+            // 2 for hp increase
+            // 3 for attack
+            // 4 for def
+            // 5 for magic res
+            int n = number_of_turns_in_effect;
+            
+                switch (skill_type){
+                    case 1:
+                        
+                        if (heal_percentage != 0){
+                            enemy.hp += Convert.ToInt32(heal_percentage / 100 * enemy.hp_limit);
+                        }
+                        enemy.hp += hp_increase_amount;
+
+                        if (enemy.hp >= enemy.hp_limit){
+                            enemy.hp = enemy.hp_limit; 
+                        }
+
+                        break;
+
+                    case 2:
+                        if (hp_increase_percentage != 0){
+                                enemy.hp_limit = Convert.ToInt32((hp_increase_percentage / 100 * enemy.hp_limit) + enemy.hp_limit);
+                        }
+                        enemy.hp_limit += hp_increase_amount;
+                        
+                        if (enemy.hp >= enemy.hp_limit){
+                            enemy.hp = enemy.hp_limit; 
+                        }
+                        break;
+
+                    case 3:
+                        enemy.basic_damage_type = attack_type;
+
+                        if (attack_increase_percentage != 0){
+                                    enemy.physical_attack = Convert.ToInt32((attack_increase_percentage / 100 * enemy.physical_attack) + enemy.physical_attack);
+                            }
+                        enemy.physical_attack += attack_increase_amount;
+
+                        if (attack_increase_percentage != 0){
+                                    enemy.magic_attack = Convert.ToInt32((attack_increase_percentage / 100 * enemy.magic_attack) + enemy.magic_attack);
+                            }
+                        enemy.magic_attack += attack_increase_amount;
+
+                        if (attack_percentage != 0){
+                            enemy.physical_attack = (attack_percentage / 100 * enemy.physical_attack) + enemy.physical_attack;
+                        }
+                        enemy.physical_attack += attack_amount;
+
+                        if (attack_percentage != 0){
+                            enemy.magic_attack = (attack_percentage / 100 * enemy.magic_attack) + enemy.magic_attack;
+                        }
+                        enemy.magic_attack += attack_amount;
+
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                }
+            
         }
 
         public void SkillInfo(){

@@ -7,8 +7,6 @@ namespace TowerGame
 {
     class Program
     {
-        
-
         // TODO 
         // Item Application
         // Skill 
@@ -20,9 +18,9 @@ namespace TowerGame
             while (!player.isDead() && !enemy.isDead()){
                 
                 Console.WriteLine("==========================================");
-                Console.WriteLine("| " + player.player_name + " | " + player.hp + " / " + player.hp_limit + " |") ;
+                Console.WriteLine("| " + player.player_name + " | " + Convert.ToInt32(player.hp) + " / " + player.hp_limit + " |") ;
                 Console.WriteLine("==========================================");
-                Console.WriteLine("| " + enemy.name + " | " + enemy.hp + " / " + enemy.hp_limit + " |") ;
+                Console.WriteLine("| " + enemy.name + " | " + Convert.ToInt32(enemy.hp) + " / " + enemy.hp_limit + " |") ;
                 Console.WriteLine("==========================================\n");
 
 
@@ -77,6 +75,13 @@ namespace TowerGame
                             
                             break;
                         } else {
+                            player.equipped_item.UseItem(player);
+                            Console.WriteLine(player.player_name + " used a " + player.equipped_item);
+                            if (player.equipped_item.isEmpty() == true){
+                                Console.WriteLine(player.player_name + " used their last " + player.equipped_item);
+                                player.equipped_item.id_number = -1;
+                            }
+                            quitLoop = true;
                             break;
                         }
                         
@@ -103,19 +108,19 @@ namespace TowerGame
                     switch (enemy.basic_attack_type){
                         case 1:
                             player.UpdateHP(enemy.physical_attack,1);
-                            Console.WriteLine(String.Format("{0} deals {1} damage to {2}",enemy.name,   player.UpdateHP(enemy.physical_attack,1),player.player_name));
+                            Console.WriteLine(String.Format("{0} deals {1} damage to {2}",enemy.name,    Convert.ToInt32(player.UpdateHP(enemy.physical_attack,1)),player.player_name));
                             break;
                         case 2:
                             player.UpdateHP(enemy.magic_attack,2);
-                            Console.WriteLine(String.Format("{0} deals {1} damage to {2}",enemy.name,   player.UpdateHP(enemy.magic_attack,2),player.player_name));
+                            Console.WriteLine(String.Format("{0} deals {1} damage to {2}",enemy.name,    Convert.ToInt32(player.UpdateHP(enemy.magic_attack,2)),player.player_name));
                             break;
                         case 3:
                             player.UpdateHP((enemy.physical_attack + enemy.magic_attack)/1.5,3);
-                            Console.WriteLine(String.Format("{0} deals {1} damage to {2}",enemy.name,   player.UpdateHP((enemy.physical_attack + enemy.magic_attack)/1.5,3),player.player_name));
+                            Console.WriteLine(String.Format("{0} deals {1} damage to {2}",enemy.name,    Convert.ToInt32(player.UpdateHP((enemy.physical_attack + enemy.magic_attack)/1.5,3)),player.player_name));
                             break;
                         case 4:
                             player.UpdateHP(enemy.physical_attack + enemy.magic_attack,4);
-                            Console.WriteLine(String.Format("{0} deals {1} damage to {2}",enemy.name,   player.UpdateHP(enemy.physical_attack + enemy.magic_attack,4),player.player_name));
+                            Console.WriteLine(String.Format("{0} deals {1} damage to {2}",enemy.name,    Convert.ToInt32(player.UpdateHP(enemy.physical_attack + enemy.magic_attack,4)),player.player_name));
                             break;
                     }
                 } 
@@ -123,21 +128,24 @@ namespace TowerGame
                     var elite = enemy as EliteEnemy;
                     if (elite != null){
                         if (elite.first_skill.isReady == true){
-                            elite.first_skill.UseSkill();
+                            elite.first_skill.UseSkill(enemy);
                         } else {
                             // basic attack
+                            elite.first_skill.skill_point++; // add sp
+
+
                             switch (elite.basic_attack_type){
                                 case 1:
-                                    Console.WriteLine(String.Format("{0} deals {1} damage to {2}",elite.name,   player.UpdateHP(elite.physical_attack,1),player.player_name));
+                                    Console.WriteLine(String.Format("{0} deals {1} damage to {2}",elite.name,   Convert.ToInt32(player.UpdateHP(elite.physical_attack,1)),player.player_name));
                                     break;
                                 case 2:
-                                    Console.WriteLine(String.Format("{0} deals {1} damage to {2}",elite.name,   player.UpdateHP(elite.magic_attack,2),player.player_name));
+                                    Console.WriteLine(String.Format("{0} deals {1} damage to {2}",elite.name,   Convert.ToInt32(player.UpdateHP(elite.magic_attack,2)),player.player_name));
                                     break;
                                 case 3:
-                                    Console.WriteLine(String.Format("{0} deals {1} damage to {2}",elite.name,   player.UpdateHP((elite.physical_attack + elite.magic_attack)/1.5,3),player.player_name));
+                                    Console.WriteLine(String.Format("{0} deals {1} damage to {2}",elite.name,   Convert.ToInt32(player.UpdateHP((elite.physical_attack + elite.magic_attack)/1.5,3)),player.player_name));
                                     break;
                                 case 4:
-                                    Console.WriteLine(String.Format("{0} deals {1} damage to {2}",elite.name,   player.UpdateHP(elite.physical_attack + elite.magic_attack,4),player.player_name));
+                                    Console.WriteLine(String.Format("{0} deals {1} damage to {2}",elite.name,   Convert.ToInt32(player.UpdateHP(elite.physical_attack + elite.magic_attack,4)),player.player_name));
                                     break;
                             }
                         }
@@ -146,7 +154,36 @@ namespace TowerGame
                     }
 
                 } else {
-                    Console.WriteLine("Something is Wrong :( ");
+                    var boss = enemy as BossEnemy;
+                    if (boss != null){
+                        if (boss.first_skill.isReady == true){
+                            boss.first_skill.UseSkill(enemy);
+                        } else if (boss.ultimate.isReady == true){
+                            boss.first_skill.UseSkill(enemy);
+                        } else {
+                            // basic attack
+                            boss.first_skill.skill_point++; // add sp
+
+
+                            switch (boss.basic_attack_type){
+                                case 1:
+                                    Console.WriteLine(String.Format("{0} deals {1} damage to {2}",boss.name,   Convert.ToInt32(player.UpdateHP(boss.physical_attack,1)),player.player_name));
+                                    break;
+                                case 2:
+                                    Console.WriteLine(String.Format("{0} deals {1} damage to {2}",boss.name,   Convert.ToInt32(player.UpdateHP(boss.magic_attack,2)),player.player_name));
+                                    break;
+                                case 3:
+                                    Console.WriteLine(String.Format("{0} deals {1} damage to {2}",boss.name,   Convert.ToInt32(player.UpdateHP((boss.physical_attack + boss.magic_attack)/1.5,3)),player.player_name));
+                                    break;
+                                case 4:
+                                    Console.WriteLine(String.Format("{0} deals {1} damage to {2}",boss.name,   Convert.ToInt32(player.UpdateHP(boss.physical_attack + boss.magic_attack,4)),player.player_name));
+                                    break;
+                            }
+                        }
+                    } else {
+                        Console.WriteLine("Something is Wrong :( ");
+                    }
+
                 }
             }
             turns++;
@@ -158,10 +195,15 @@ namespace TowerGame
             if (enemy.isDead() == true){
                 if (enemy.GetType() == typeof(Enemy)){
                     player.basic_enemy_kills ++;
+                    player.pickItem(enemy.loot);
                 } else if(enemy.GetType() == typeof(EliteEnemy)){
                     player.elite_enemy_kills ++;
+                    player.pickItem(enemy.loot);
+
                 } else if(enemy.GetType() == typeof(BossEnemy)){
                     player.boss_enemy_kills ++;
+                    player.pickItem(enemy.loot);
+
                 } 
                 return true;
             } else {
@@ -184,7 +226,16 @@ namespace TowerGame
                 return false;
             }
         }
-       
+        public static void TypeWithDelay(string text, int delayMilliseconds = 10)
+            {   
+                text = text.Replace("\\n", Environment.NewLine);
+                foreach (char c in text)
+                {
+                    Console.Write(c);
+                    Thread.Sleep(delayMilliseconds);
+                }
+                Console.Write("\n");
+            }
         static void Main(string[] args)
         {
         //     #region Class Declaration for CC3 checking
@@ -233,8 +284,8 @@ __________                       __________        .__                          
  |____|   |____/ |__|    \___  >  |____|    (____  /__|___|  / (____  /___|  /\____ |  /_______  /____/ |__|   |__|  \___  >__|  |__|___|  /\___  / 
                              \/                  \/        \/       \/     \/      \/          \/                        \/              \//_____/  
 ");
-            Console.WriteLine("Your goal is to escape the castle while rescuing the queen while encountering a lot of enemies . GLHF :)");
-            Console.WriteLine("\" A \" \n");
+            TypeWithDelay("Your goal is to escape the castle while rescuing the queen while encountering a lot of enemies . GLHF :)");
+            TypeWithDelay("\" A \" \n");
 
 
             // User Input (Name)
@@ -242,33 +293,33 @@ __________                       __________        .__                          
             player.NameAssignment();
             player.StatCheck();
             Console.Clear();
-            Console.WriteLine(" So before we begin, lets have a tutorial about the combat system in this game.");
+            TypeWithDelay(" So before we begin, lets have a tutorial about the combat system in this game.");
 
             #endregion
 
             #region Battle Tutorial Phase? ig
         
-            Console.WriteLine("Tutorial Stage");
+            TypeWithDelay("Tutorial Stage");
 
-            Console.WriteLine("As of now , you can only do basic attacks so ye pain. ");
-            Console.WriteLine("Anyway, this battle system here is {turn-based} since console app moment. ");
-            Console.WriteLine("Usually you will have the first to use the turn then it's the enemy's turn");
-            Console.WriteLine("The controls during battle are: \n");
+            TypeWithDelay("As of now , you can only do basic attacks so ye pain. ");
+            TypeWithDelay("Anyway, this battle system here is {turn-based} since console app moment. ");
+            TypeWithDelay("Usually you will have the first to use the turn then it's the enemy's turn");
+            TypeWithDelay("The controls during battle are: \n");
 
-            Console.WriteLine("[1] for basic attack   ");
-            Console.WriteLine("[2] for first skill    ");
-            Console.WriteLine("[3] for ultimate skill \n");
-            Console.WriteLine("[Q] for stat check     ");
-            Console.WriteLine("[E] for using the equipped item   ");
-            Console.WriteLine("[H] for help panel   ");
+            TypeWithDelay("[1] for basic attack   ");
+            TypeWithDelay("[2] for first skill    ");
+            TypeWithDelay("[3] for ultimate skill \n");
+            TypeWithDelay("[Q] for stat check     ");
+            TypeWithDelay("[E] for using the equipped item   ");
+            TypeWithDelay("[H] for help panel   ");
 
-            Console.WriteLine("BTW, you don't need to press Enter during the battle, since the developer will suffer just for good user experience LMAO");
-            Console.WriteLine("Anyway, before you encounter an enemy later");
-            Console.WriteLine("You are only enable to do a basic attack");
-            Console.WriteLine("I hope you should remember that");
+            TypeWithDelay("BTW, you don't need to press Enter during the battle, since the developer will suffer just for good user experience LMAO");
+            TypeWithDelay("Anyway, before you encounter an enemy later");
+            TypeWithDelay("You are only enable to do a basic attack");
+            TypeWithDelay("I hope you should remember that");
 
-            Console.WriteLine("SO are you ready to suffer? ");
-            Console.WriteLine("Press [Enter] to continue");
+            TypeWithDelay("SO are you ready to suffer? ");
+            TypeWithDelay("Press [Enter] to continue");
 
 
             do {
@@ -285,7 +336,7 @@ __________                       __________        .__                          
             if(BattleInterface(player,mini_slime) == false){
                 Console.WriteLine("wha uoghhhhhh");
             } else {
-                Console.WriteLine("Congrats you beat the tutorial stage");
+                TypeWithDelay("Congrats you beat the tutorial stage");
             }
 
             
@@ -293,18 +344,15 @@ __________                       __________        .__                          
 
             #region Start
 
-             Console.WriteLine(@"
- .----------------.  .----------------.  .----------------.  .----------------.  .----------------.    .----------------. 
-| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |  | .--------------. |
-| |  _________   | || |   _____      | || |     ____     | || |     ____     | || |  _______     | |  | |     __       | |
-| | |_   ___  |  | || |  |_   _|     | || |   .'    `.   | || |   .'    `.   | || | |_   __ \    | |  | |    /  |      | |
-| |   | |_  \_|  | || |    | |       | || |  /  .--.  \  | || |  /  .--.  \  | || |   | |__) |   | |  | |    `| |      | |
-| |   |  _|      | || |    | |   _   | || |  | |    | |  | || |  | |    | |  | || |   |  __ /    | |  | |     | |      | |
-| |  _| |_       | || |   _| |__/ |  | || |  \  `--'  /  | || |  \  `--'  /  | || |  _| |  \ \_  | |  | |    _| |_     | |
-| | |_____|      | || |  |________|  | || |   `.____.'   | || |   `.____.'   | || | |____| |___| | |  | |   |_____|    | |
-| |              | || |              | || |              | || |              | || |              | |  | |              | |
-| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |  | '--------------' |
- '----------------'  '----------------'  '----------------'  '----------------'  '----------------'    '----------------' 
+            Console.WriteLine(@"
+ _______  __        ______     ______   .______          __  
+|   ____||  |      /  __  \   /  __  \  |   _  \        /_ | 
+|  |__   |  |     |  |  |  | |  |  |  | |  |_)  |        | | 
+|   __|  |  |     |  |  |  | |  |  |  | |      /         | | 
+|  |     |  `----.|  `--'  | |  `--'  | |  |\  \----.    | | 
+|__|     |_______| \______/   \______/  | _| `._____|    |_| 
+                                                             
+
 ");
 
             Floor floor1 = new Floor(1);
@@ -312,14 +360,29 @@ __________                       __________        .__                          
             Console.WriteLine(string.Join(", ", floor1.floor_rooms));
             floor1.Explore(player);
 
+
+            Console.WriteLine(@"
+ _______  __        ______     ______   .______          ___   
+|   ____||  |      /  __  \   /  __  \  |   _  \        |__ \  
+|  |__   |  |     |  |  |  | |  |  |  | |  |_)  |          ) | 
+|   __|  |  |     |  |  |  | |  |  |  | |      /          / /  
+|  |     |  `----.|  `--'  | |  `--'  | |  |\  \----.    / /_  
+|__|     |_______| \______/   \______/  | _| `._____|   |____| 
+ ");                                                              
+
             Floor floor2 = new Floor(2);
             player.hp = player.hp_limit;
             floor2.Explore(player);
 
-            Floor floor3 = new Floor(3);
-            player.hp = player.hp_limit;
-            floor3.Explore(player);
-
+            Console.WriteLine(@"
+██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗██╗███╗   ██╗
+╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║    ██║██║████╗  ██║
+ ╚████╔╝ ██║   ██║██║   ██║    ██║ █╗ ██║██║██╔██╗ ██║
+  ╚██╔╝  ██║   ██║██║   ██║    ██║███╗██║██║██║╚██╗██║
+   ██║   ╚██████╔╝╚██████╔╝    ╚███╔███╔╝██║██║ ╚████║
+   ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝
+                                                      
+");
 
             #endregion
 

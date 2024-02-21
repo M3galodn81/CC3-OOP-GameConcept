@@ -140,8 +140,6 @@ namespace TowerGame{
                         floor_rooms[randomIndex] = 3;
                     }
 
-
-
                     break;
 
                 case 5:
@@ -156,7 +154,6 @@ namespace TowerGame{
                     for (int no_of_elite = rnd.Next(1,5) ; no_of_elite!= 0 ; no_of_elite--){
                             floor_rooms[no_of_elite] = 3;
                     }
-
 
                     int hasSafe = rnd.Next(2);
 
@@ -221,7 +218,7 @@ namespace TowerGame{
         public Safehouse(int floor_level, int room_type, MainCharacter player) : base(floor_level, room_type, player) {
             // Safehouse-specific initialization
             Random rnd = new Random();
-            Console.WriteLine("As you enter the room you see some supplies. ");
+            Program.TypeWithDelay("As you enter the room you see some supplies. ");
 
             switch (floor_level){
                 case 1:
@@ -230,37 +227,37 @@ namespace TowerGame{
                     Weapon w2 = new Weapon(11);
                     Weapon w3 = new Weapon(21);
 
-                    Console.WriteLine("You saw [" + w1.name + "] lying on the floor.");
+                    Program.TypeWithDelay("You saw [" + w1.name + "] lying on the floor.");
                      Thread.Sleep(2000);
-                    Console.WriteLine("You saw [" + w2.name + "] on the table. ");
+                    Program.TypeWithDelay("You saw [" + w2.name + "] on the table. ");
                      Thread.Sleep(2000);
-                    Console.WriteLine("You saw [" + w3.name + "] near the window.");
+                    Program.TypeWithDelay("You saw [" + w3.name + "] near the window.");
                      Thread.Sleep(2000);
 
-                    Console.WriteLine("Press [1] if you want [" + w1.name + "]");
-                    Console.WriteLine("Press [2] if you want [" + w2.name + "]");
-                    Console.WriteLine("Press [3] if you want [" + w3.name + "]\n");
+                    Program.TypeWithDelay("Press [1] if you want [" + w1.name + "]");
+                    Program.TypeWithDelay("Press [2] if you want [" + w2.name + "]");
+                    Program.TypeWithDelay("Press [3] if you want [" + w3.name + "]\n");
 
-                    Console.WriteLine("Press [Q] if you want know the stats of the supplies");
-                    Console.WriteLine("Press [X] if you want to leave the room\n");
+                    Program.TypeWithDelay("Press [Q] if you want know the stats of the supplies");
+                    Program.TypeWithDelay("Press [X] if you want to leave the room\n");
 
-                    Console.WriteLine("You can press [H] for help");
+                    Program.TypeWithDelay("You can press [H] for help");
 
                     Boolean quitLoop = false;
                     do {
                         switch (Console.ReadKey(true).Key){
                             case ConsoleKey.D1:
-                                Console.WriteLine(player.player_name + " picked the " + w1.name);
+                                Program.TypeWithDelay(player.player_name + " picked the " + w1.name);
                                 player.pickWeapon(w1);
                                 quitLoop = true;
                                 break;
                             case ConsoleKey.D2:
-                                Console.WriteLine(player.player_name + " picked the " + w2.name);
+                                Program.TypeWithDelay(player.player_name + " picked the " + w2.name);
                                 player.pickWeapon(w2);
                                 quitLoop = true;
                                 break;
                             case ConsoleKey.D3:
-                                Console.WriteLine(player.player_name + " picked the " + w3.name);
+                                Program.TypeWithDelay(player.player_name + " picked the " + w3.name);
                                 player.pickWeapon(w3);
                                 quitLoop = true;
                                 break;
@@ -270,19 +267,19 @@ namespace TowerGame{
                                 w3.WeaponCheck();
                                 break;
                             case ConsoleKey.H:
-                                Console.WriteLine("Press [1] if you want [" + w1.name + "]");
-                                Console.WriteLine("Press [2] if you want [" + w2.name + "]");
-                                Console.WriteLine("Press [3] if you want [" + w3.name + "]\n");
+                                Program.TypeWithDelay("Press [1] if you want [" + w1.name + "]");
+                                Program.TypeWithDelay("Press [2] if you want [" + w2.name + "]");
+                                Program.TypeWithDelay("Press [3] if you want [" + w3.name + "]\n");
 
-                                Console.WriteLine("Press [Q] if you want know the stats of the supplies");
-                                Console.WriteLine("Press [X] if you want to leave the room\n");
+                                Program.TypeWithDelay("Press [Q] if you want know the stats of the supplies");
+                                Program.TypeWithDelay("Press [X] if you want to leave the room\n");
 
-                                Console.WriteLine("You can press [H] for help (You just pressed H)");
+                                Program.TypeWithDelay("You can press [H] for help (You just pressed H)");
 
                                 break;
                             case ConsoleKey.X:
 
-                                Console.WriteLine("You picked nothing and leave the room");
+                                Program.TypeWithDelay("You picked nothing and leave the room");
                                 quitLoop = true;
                                 break;
                         }   
@@ -292,20 +289,64 @@ namespace TowerGame{
 
                 case 2:
 
+                    Weapon w11 = new Weapon(3);
+                    Weapon w21 = new Weapon(13);
+                    Weapon w31 = new Weapon(23);
+
+                    Program.TypeWithDelay("You saw [" + w11.name + "] lying on the floor.");
+                     Thread.Sleep(2000);
+                    Program.TypeWithDelay("You saw [" + w21.name + "] on the table. ");
+                     Thread.Sleep(2000);
+                    Program.TypeWithDelay("You saw [" + w31.name + "] near the window.");
+                     Thread.Sleep(2000);
+
+                    Program.TypeWithDelay("Press [1] if you want [" + w11.name + "]");
+                    Program.TypeWithDelay("Press [2] if you want [" + w21.name + "]");
+                    Program.TypeWithDelay("Press [3] if you want [" + w31.name + "]\n");
+
+                    Program.TypeWithDelay("Press [Q] if you want know the stats of the supplies");
+                    Program.TypeWithDelay("Press [X] if you want to leave the room\n");
+
+                    Program.TypeWithDelay("You can press [H] for help");
+
                     quitLoop = false;
                     do {
                         switch (Console.ReadKey(true).Key){
                             case ConsoleKey.D1:
+                                Program.TypeWithDelay(player.player_name + " picked the " + w11.name);
+                                player.pickWeapon(w11);
+                                quitLoop = true;
                                 break;
                             case ConsoleKey.D2:
+                                Program.TypeWithDelay(player.player_name + " picked the " + w21.name);
+                                player.pickWeapon(w21);
+                                quitLoop = true;
                                 break;
                             case ConsoleKey.D3:
+                                Program.TypeWithDelay(player.player_name + " picked the " + w31.name);
+                                player.pickWeapon(w31);
+                                quitLoop = true;
                                 break;
                             case ConsoleKey.Q:
+                                w11.WeaponCheck();
+                                w21.WeaponCheck();
+                                w31.WeaponCheck();
                                 break;
                             case ConsoleKey.H:
+                                Program.TypeWithDelay("Press [1] if you want [" + w11.name + "]");
+                                Program.TypeWithDelay("Press [2] if you want [" + w21.name + "]");
+                                Program.TypeWithDelay("Press [3] if you want [" + w31.name + "]\n");
+
+                                Program.TypeWithDelay("Press [Q] if you want know the stats of the supplies");
+                                Program.TypeWithDelay("Press [X] if you want to leave the room\n");
+
+                                Program.TypeWithDelay("You can press [H] for help (You just pressed H)");
+
                                 break;
                             case ConsoleKey.X:
+
+                                Program.TypeWithDelay("You picked nothing and leave the room");
+                                quitLoop = true;
                                 break;
                         }   
                     } while (! Console.KeyAvailable && !quitLoop);
@@ -403,7 +444,7 @@ namespace TowerGame{
                 default:
                     Console.Clear();
                     Console.BackgroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("ERROR");
+                    Program.TypeWithDelay("ERROR");
                     Thread.Sleep(5000);
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.Clear();
@@ -419,15 +460,15 @@ namespace TowerGame{
         public EnemyRoom(int floor_level, int room_type, MainCharacter player) : base(floor_level, room_type, player) {
             // Enemy-specific initialization
 
-            Console.WriteLine("As you gently opened the door. ");
+            Program.TypeWithDelay("As you gently opened the door. ");
             Thread.Sleep(500);
 
             switch (floor_level){
                 case 1:
                     Enemy enemy = new Enemy();
                     enemy.RandomGen(floor_level,1);
-
-                    Console.WriteLine("You saw a " + enemy.name);
+                    
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -446,8 +487,8 @@ namespace TowerGame{
 
                     enemy = new Enemy();
                     enemy.RandomGen(floor_level,1);
-
-                    Console.WriteLine("You saw a " + enemy.name);
+                    
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -466,8 +507,8 @@ namespace TowerGame{
                 case 3:
                     enemy = new Enemy();
                     enemy.RandomGen(floor_level,1);
-
-                    Console.WriteLine("You saw a " + enemy.name);
+                    
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -485,8 +526,8 @@ namespace TowerGame{
                 case 4:
                     enemy = new Enemy();
                     enemy.RandomGen(floor_level,1);
-
-                    Console.WriteLine("You saw a " + enemy.name);
+                    
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -504,8 +545,8 @@ namespace TowerGame{
                 case 5:
                     enemy = new Enemy();
                     enemy.RandomGen(floor_level,1);
-
-                    Console.WriteLine("You saw a " + enemy.name);
+                    
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -523,8 +564,8 @@ namespace TowerGame{
                 case 6:
                     enemy = new Enemy();
                     enemy.RandomGen(floor_level,1);
-
-                    Console.WriteLine("You saw a " + enemy.name);
+                    
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -542,7 +583,7 @@ namespace TowerGame{
                 default:
                     Console.Clear();
                     Console.BackgroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("ERROR");
+                    Program.TypeWithDelay("ERROR");
                     Thread.Sleep(5000);
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.Clear();
@@ -554,7 +595,7 @@ namespace TowerGame{
 
     public class EliteRoom : Room {
         public EliteRoom(int floor_level, int room_type, MainCharacter player) : base(floor_level, room_type, player) {
-            Console.WriteLine("You hear something and you decided to find the source but ... ");
+            Program.TypeWithDelay("You hear something and you decided to find the source but ... ");
             Thread.Sleep(500);
 
             switch (floor_level){
@@ -562,7 +603,8 @@ namespace TowerGame{
                     EliteEnemy enemy = new EliteEnemy();
                     enemy.RandomGen(floor_level,2);
 
-                    Console.WriteLine("You saw a " + enemy.name);
+                    Console.Clear();
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -582,7 +624,7 @@ namespace TowerGame{
                     enemy = new EliteEnemy();
                     enemy.RandomGen(floor_level,2);
 
-                    Console.WriteLine("You saw a " + enemy.name);
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -602,7 +644,7 @@ namespace TowerGame{
                     enemy = new EliteEnemy();
                     enemy.RandomGen(floor_level,2);
 
-                    Console.WriteLine("You saw a " + enemy.name);
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -621,7 +663,7 @@ namespace TowerGame{
                     enemy = new EliteEnemy();
                     enemy.RandomGen(floor_level,2);
 
-                    Console.WriteLine("You saw a " + enemy.name);
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -640,7 +682,7 @@ namespace TowerGame{
                     enemy = new EliteEnemy();
                     enemy.RandomGen(floor_level,2);
 
-                    Console.WriteLine("You saw a " + enemy.name);
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -659,7 +701,7 @@ namespace TowerGame{
                     enemy = new EliteEnemy();
                     enemy.RandomGen(floor_level,2);
 
-                    Console.WriteLine("You saw a " + enemy.name);
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -677,7 +719,7 @@ namespace TowerGame{
                 default:
                     Console.Clear();
                     Console.BackgroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("ERROR");
+                    Program.TypeWithDelay("ERROR");
                     Thread.Sleep(5000);
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.Clear();
@@ -706,17 +748,17 @@ namespace TowerGame{
             
             switch (floor_level){
                 case 1:
-                    EliteEnemy enemy = new EliteEnemy();
+                    BossEnemy enemy = new BossEnemy();
                     enemy.RandomGen(floor_level,3);
 
 
-                    Console.WriteLine("You are alone yet ...");
+                    Program.TypeWithDelay("You are alone yet ...");
                     Thread.Sleep(2500); Console.Clear();
-                    Console.WriteLine("you are still have courage to enter this castle ...");
+                    Program.TypeWithDelay("you are still have courage to enter this castle ...");
                     Thread.Sleep(2500); Console.Clear();
-                    Console.WriteLine("You must know that ... ");
+                    Program.TypeWithDelay("You must know that ... ");
                     Thread.Sleep(2500); Console.Clear();
-                    Console.WriteLine("Entering here is a MISTAKE ... ");
+                    Program.TypeWithDelay("Entering here is a MISTAKE ... ");
                     Thread.Sleep(2500); Console.Clear();
 
                     Console.WriteLine(enemy.name + " want you to perish. ");
@@ -732,34 +774,59 @@ namespace TowerGame{
                     Thread.Sleep(700);
                     Console.Clear();
                     Program.BattleInterface(player,enemy);
+
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Clear();
                     break;
 
                 case 2:
+                    enemy = new BossEnemy();
+                    enemy.RandomGen(floor_level,3);
 
-                    enemy = new EliteEnemy();
-                    enemy.RandomGen(floor_level,2);
 
-                    Console.WriteLine("You saw a " + enemy.name);
-                    Thread.Sleep(500);
+                    Program.TypeWithDelay("You are not here to save anyone ...");
+                    Thread.Sleep(2500); Console.Clear();
+                    Program.TypeWithDelay("you still not  ...");
+                    Thread.Sleep(2500); Console.Clear();
+                    Program.TypeWithDelay("a .......................");
+                    Thread.Sleep(2500); Console.Clear();
+                    Program.TypeWithDelay("H E R O",100);
+                    Thread.Sleep(2500); Console.Clear();
+
+                    Console.WriteLine(enemy.name + " wants you to perish. ");
+                    Thread.Sleep(1500);
 
                     Console.WriteLine(@"
-                                    _______  _______  _______  _______  _______ 
-                                    |    ___||_     _||     __||   |   ||_     _|
-                                    |    ___| _|   |_ |    |  ||       |  |   |  
-                                    |___|    |_______||_______||___|___|  |___|  
+
+                                        █████▒ ██▓  ▄████  ██░ ██ ▄▄▄█████▓
+                                        ▓██   ▒ ▓██▒ ██▒ ▀█▒▓██░ ██▒▓  ██▒ ▓▒
+                                        ▒████ ░ ▒██▒▒██░▄▄▄░▒██▀▀██░▒ ▓██░ ▒░
+                                        ░▓█▒  ░ ░██░░▓█  ██▓░▓█ ░██ ░ ▓██▓ ░ 
+                                        ░▒█░    ░██░░▒▓███▀▒░▓█▒░██▓  ▒██▒ ░ 
+                                        ▒ ░    ░▓   ░▒   ▒  ▒ ░░▒░▒  ▒ ░░   
+                                        ░       ▒ ░  ░   ░  ▒ ░▒░ ░    ░    
+                                        ░ ░     ▒ ░░ ░   ░  ░  ░░ ░  ░      
+                                                ░        ░  ░  ░  ░         
+                                                                            
+
                                              
 ");
                     Thread.Sleep(700);
                     Console.Clear();
                     Program.BattleInterface(player,enemy);
+
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Clear();
                     break;
                     
                 
                 case 3:
-                    enemy = new EliteEnemy();
+                    enemy = new BossEnemy();
                     enemy.RandomGen(floor_level,2);
 
-                    Console.WriteLine("You saw a " + enemy.name);
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -775,10 +842,10 @@ namespace TowerGame{
                     break;
 
                 case 4:
-                    enemy = new EliteEnemy();
+                    enemy = new BossEnemy();
                     enemy.RandomGen(floor_level,2);
 
-                    Console.WriteLine("You saw a " + enemy.name);
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -794,10 +861,10 @@ namespace TowerGame{
                     break;
 
                 case 5:
-                    enemy = new EliteEnemy();
+                    enemy = new BossEnemy();
                     enemy.RandomGen(floor_level,2);
 
-                    Console.WriteLine("You saw a " + enemy.name);
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -813,10 +880,10 @@ namespace TowerGame{
                     break;
 
                 case 6:
-                    enemy = new EliteEnemy();
+                    enemy = new BossEnemy();
                     enemy.RandomGen(floor_level,2);
 
-                    Console.WriteLine("You saw a " + enemy.name);
+                    Program.TypeWithDelay("You saw a " + enemy.name);
                     Thread.Sleep(500);
 
                     Console.WriteLine(@"
@@ -834,7 +901,7 @@ namespace TowerGame{
                 default:
                     Console.Clear();
                     Console.BackgroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("ERROR");
+                    Program.TypeWithDelay("ERROR");
                     Thread.Sleep(5000);
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.Clear();

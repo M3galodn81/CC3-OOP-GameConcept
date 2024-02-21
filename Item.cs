@@ -133,7 +133,145 @@ namespace TowerGame{
         } 
 
 
-        
-    }
+        public void QuickSetup(int id){
+            switch (id){
 
+                #region HP Potions
+
+                case 1001:
+                    ItemGeneralSetup(1001,"Basic Health Potion","A potion that heals you",1,0);
+                    ItemHPSetup(75,0,0,0);
+                    break;
+                case 1002:
+                    ItemGeneralSetup(1002,"Large Health Potion","A potion that heals you",1,0);
+                    ItemHPSetup(150,0,0,0);
+                    break;
+                case 1003:
+                    ItemGeneralSetup(1003,"Mega Health Potion","A potion that heals you",1,0);
+                    ItemHPSetup(300,0,0,0);
+                    break;
+                case 1004:
+                    ItemGeneralSetup(1004,"Full Health Potion","A potion that heals you",1,0);
+                    ItemHPSetup(0,100,0,0);
+                    break;
+
+                case 1005:
+                    ItemGeneralSetup(1005,"Half Heart Crystal","A potion that heals you",2,0);
+                    ItemHPSetup(250,0,250,0);
+                    break;
+                case 1006:
+                    ItemGeneralSetup(1006,"Heart Crystal","A potion that heals you",2,0);
+                    ItemHPSetup(500,0,500,0);
+                    break;
+
+                case 1007:
+                    ItemGeneralSetup(1007,"Basic Regeneration Potion","A potion that heals you",1,10);
+                    ItemHPSetup(0,10,0,0);
+                    break;
+                case 1008:
+                    ItemGeneralSetup(1001,"Large Regeneration Potion","A potion that heals you",1,20);
+                    ItemHPSetup(0,20,0,0);
+                    break;
+                #endregion
+
+                #region ATK Potions
+
+                case 2001:
+                    ItemGeneralSetup(1001,"Basic Attack Potion","A potion that heals you",1,0);
+                    ItemAttackSetup(0,0,15,0);
+                    break;
+                case 2002:
+                    ItemGeneralSetup(1002,"Large Health Potion","A potion that heals you",1,0);
+                    ItemAttackSetup(0,0,30,0);
+                    break;
+                case 2003:
+                    ItemGeneralSetup(1003,"Mega Health Potion","A potion that heals you",1,0);
+                    ItemAttackSetup(0,0,60,0);
+                    break;
+                case 2004:
+                    ItemGeneralSetup(1004,"Exo Attack Potion","A potion that heals you",1,0);
+                    ItemAttackSetup(0,0,240,0);
+                    break;
+
+                case 2005:
+                    ItemGeneralSetup(1005,"Broken Crystal Ball","A potion that heals you",1,3);
+                    ItemAttackSetup(0,100,0,0);
+                    break;
+                case 2006:
+                    ItemGeneralSetup(1006,"Black Crystal Ball","A potion that heals you",1,6);
+                    ItemAttackSetup(0,150,0,0);
+                    break;
+
+                case 2007:
+                    ItemGeneralSetup(1007,"Firefly","A potion that heals you",1,0);
+                    ItemAttackSetup(0,0,0,10);
+                    break;
+                case 2008:
+                    ItemGeneralSetup(1001,"Butterfly","A potion that heals you",1,0);
+                    ItemAttackSetup(0,0,0,20);
+                    break;
+
+                #endregion
+            }
+        }
+
+        public void UseItem(MainCharacter enemy){
+            if (isEmpty() != true){
+                int n = number_of_turns_in_effect;
+                    
+                if (heal_percentage != 0){
+                    enemy.hp += Convert.ToInt32(heal_percentage / 100 * enemy.hp_limit);
+                }
+                enemy.hp += heal_amount;
+
+                if (enemy.hp >= enemy.hp_limit){
+                    enemy.hp = enemy.hp_limit; 
+                }
+
+                if (hp_increase_percentage != 0){
+                        enemy.hp_limit = Convert.ToInt32((hp_increase_percentage / 100 * enemy.hp_limit) + enemy.hp_limit);
+                }
+                enemy.hp_limit += hp_increase_amount;
+                
+                if (enemy.hp >= enemy.hp_limit){
+                    enemy.hp = enemy.hp_limit; 
+                }
+
+                if (attack_increase_percentage != 0){
+                            enemy.physical_attack = Convert.ToInt32((attack_increase_percentage / 100 * enemy.physical_attack) + enemy.physical_attack);
+                    }
+                enemy.physical_attack += attack_increase_amount;
+
+                if (attack_increase_percentage != 0){
+                            enemy.magic_attack = Convert.ToInt32((attack_increase_percentage / 100 * enemy.magic_attack) + enemy.magic_attack);
+                    }
+                enemy.magic_attack += attack_increase_amount;
+
+                if (attack_percentage != 0){
+                    enemy.physical_attack = (attack_percentage / 100 * enemy.physical_attack) + enemy.physical_attack;
+                }
+                enemy.physical_attack += attack_amount;
+
+                if (attack_percentage != 0){
+                    enemy.magic_attack = (attack_percentage / 100 * enemy.magic_attack) + enemy.magic_attack;
+                }
+                enemy.magic_attack += attack_amount;
+
+
+                amount--;
+            } else {
+                id_number = -1;
+            }
+        }
+        
+        public bool isEmpty(){
+            if (amount == 0){
+                return true;
+            }
+            return false;
+        }
+    }
+        
 }
+
+

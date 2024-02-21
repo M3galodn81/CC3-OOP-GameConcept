@@ -26,7 +26,7 @@ namespace TowerGame {
         public int magic_defense = 20;
 
         public int basic_damage_type = 1; // 1 for phys ,2  for magic
-        public Item equipped_item = null;
+        public Item equipped_item = new Item();
         public Weapon equipped_weapon = null;
 
         public Skill first_skill = null;
@@ -36,10 +36,10 @@ namespace TowerGame {
         public void NameAssignment(){
             
             while (true){
-                Console.WriteLine("Hello, Type your username");
+                Program.TypeWithDelay("Hello, Type your username");
                 String user_input = Console.ReadLine();
                 if (user_input == "" || user_input == ""){
-                    Console.WriteLine("The username cannot be blank.");
+                    Program.TypeWithDelay("The username cannot be blank.");
                     continue;
                 } else {
                     player_name = user_input;
@@ -85,28 +85,32 @@ namespace TowerGame {
         }
         
         public void pickItem(Item item){
-            if (equipped_item == null) {
+            if (item.id_number == -1){
+                
+            } else if (equipped_item.id_number == 0) {
                 equipped_item = item;
+                Program.TypeWithDelay("You found a " + equipped_item.name + " ["+ equipped_item.amount + "] " + ".");
             } else if (item.id_number == equipped_item.id_number) {
                 equipped_item.amount = equipped_item.amount + item.amount;
+                Program.TypeWithDelay("You found " + equipped_item.amount + "of "+ equipped_item.name +  ".");
             } else {
                 // prompts the user to decides if they what to change their equipped item;
 
-                Console.WriteLine("You can only hold 1 kind of an item.");
-                Console.WriteLine("You can either keep your " + equipped_item.name + " or pick the " + item.name + ". " ); 
+                Program.TypeWithDelay("You can only hold 1 kind of an item.");
+                Program.TypeWithDelay("You can either keep your " + equipped_item.name +"[" + equipped_item.amount +"]" +" or pick the " + item.name  +"[" + item.amount +"]. " ); 
                 
                 while (true){
-                    Console.WriteLine("Type [E] to equipped the " + item.name);
-                    Console.WriteLine("Type [X] to keep your " + equipped_item.name);
+                    Program.TypeWithDelay("Type [E] to equipped the " + item.name);
+                    Program.TypeWithDelay("Type [X] to keep your " + equipped_item.name);
 
                     string user_input = Console.ReadLine();
                     switch (user_input){
                         case "E":
-                            Console.WriteLine("You equipped " + item.name  +".");
+                            Program.TypeWithDelay("You equipped " + item.name  +".");
                             equipped_item = item;
                             break;
                         case "X":
-                            Console.WriteLine("You keep your " + equipped_item.name  +".");
+                            Program.TypeWithDelay("You keep your " + equipped_item.name  +".");
                             break;
                         default:
                             Console.WriteLine("Use capital letters. [E] and [X] are the only options here.");
@@ -147,16 +151,16 @@ namespace TowerGame {
                 // prompts the user to decides if they what to change their equipped weapon;
 
                 Console.WriteLine("You can only hold 1 weapon.");
-                Console.WriteLine("You can either keep your " + equipped_weapon.name + " or pick the " + weapon.name + ". " ); 
+                Program.TypeWithDelay("You can either keep your " + equipped_weapon.name + " or pick the " + weapon.name + ". " ); 
                 
                 while (true){
-                    Console.WriteLine("Type [E] to equipped the " + weapon.name);
-                    Console.WriteLine("Type [X] to keep your " + equipped_weapon.name);
+                    Program.TypeWithDelay("Type [E] to equipped the " + weapon.name);
+                    Program.TypeWithDelay("Type [X] to keep your " + equipped_weapon.name);
 
                     string user_input = Console.ReadLine();
                     switch (user_input){
                         case "E":
-                            Console.WriteLine("You equipped " + weapon.name  +".");
+                            Program.TypeWithDelay("You equipped " + weapon.name  +".");
 
                             basic_damage_type = equipped_weapon.attack_type;
 
@@ -206,7 +210,7 @@ namespace TowerGame {
 
                             break;
                         case "X":
-                            Console.WriteLine("You keep your " + equipped_weapon.name  +".");
+                            Program.TypeWithDelay("You keep your " + equipped_weapon.name  +".");
                             break;
                         default:
                             Console.WriteLine("Use capital letters. [E] and [X] are the only options here.");
@@ -220,32 +224,32 @@ namespace TowerGame {
         public void learnSkill(Skill skill){
             if (first_skill == null && skill.canBeUltimate == false){
                 first_skill = skill;
-                Console.WriteLine("You learn " + skill.name  +".");
+                Program.TypeWithDelay("You learn " + skill.name  +".");
 
             } else if (second_skill == null && skill.canBeUltimate == false){
-                Console.WriteLine("You learn " + skill.name  +".");
+                Program.TypeWithDelay("You learn " + skill.name  +".");
                 second_skill = skill;
 
             } else {
-                Console.WriteLine("You can only have 2 skills pnly");
-                Console.WriteLine(String.Format("You can replace {0} or {1} with {2} or",first_skill.name ,second_skill.name , skill.name));
-                Console.WriteLine(String.Format("don't learn {0}",skill));
+                Program.TypeWithDelay("You can only have 2 skills pnly");
+                Program.TypeWithDelay(String.Format("You can replace {0} or {1} with {2} or",first_skill.name ,second_skill.name , skill.name));
+                Program.TypeWithDelay(String.Format("don't learn {0}",skill));
 
                 while (true){
-                    Console.WriteLine("Press [1] if you want to replace " + first_skill.name + " with " + skill.name + ".");
-                    Console.WriteLine("Press [2] if you want to replace " + second_skill.name + " with " + skill.name + ".");
-                    Console.WriteLine("Press [X] if you want to keep your skills.");
+                    Program.TypeWithDelay("Press [1] if you want to replace " + first_skill.name + " with " + skill.name + ".");
+                    Program.TypeWithDelay("Press [2] if you want to replace " + second_skill.name + " with " + skill.name + ".");
+                    Program.TypeWithDelay("Press [X] if you want to keep your skills.");
 
                     string user_input = Console.ReadLine();
                     switch (user_input){
                         case "1":
-                            Console.WriteLine("You learn " + skill.name  +" replacing "+ first_skill.name +".");
+                            Program.TypeWithDelay("You learn " + skill.name  +" replacing "+ first_skill.name +".");
                             break;
                         case "2":
-                            Console.WriteLine("You learn " + skill.name  +" replacing "+ second_skill.name +".");
+                            Program.TypeWithDelay("You learn " + skill.name  +" replacing "+ second_skill.name +".");
                             break;
                         default:
-                            Console.WriteLine("Use capital letters. [1], [2] and [X] are the only options here.");
+                            Program.TypeWithDelay("Use capital letters. [1], [2] and [X] are the only options here.");
                             continue;
                     }
                     break;
@@ -276,8 +280,11 @@ namespace TowerGame {
 
             switch (attack_type){
                     case 1:
-                        hp = hp - (enemy_damage - defense);
-                        after_dmg = enemy_damage - defense;
+                        if (enemy_damage >= defense){
+                            hp = hp - (enemy_damage - defense);
+                            after_dmg = enemy_damage - defense;
+                        }
+                        after_dmg = 0;
                         break;
                     case 2:
                         double final_magic_attack = enemy_damage * (1 -(magic_defense * 0.01d));
@@ -285,7 +292,9 @@ namespace TowerGame {
                         after_dmg = final_magic_attack;
                         break;
                     case 3:
-                        hp = hp - (enemy_damage - defense);
+                        if (enemy_damage >= defense){
+                            hp = hp - (enemy_damage - defense);
+                        }
                         hp = hp - (enemy_damage * (1 -(magic_defense * 0.01d)));
                         after_dmg = (enemy_damage - defense) + (enemy_damage * (1 -(magic_defense * 0.01d)));
                         break;
