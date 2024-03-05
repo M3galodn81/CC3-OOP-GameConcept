@@ -277,12 +277,23 @@ namespace TowerGame
             #region Start of the Game
             // Beginning Script
             Console.WriteLine(@"
-__________                       __________        .__                            .___   _________       _____  _____            .__                
-\______   \__ _________   ____   \______   \_____  |__| ____   _____    ____    __| _/  /   _____/__ ___/ ____\/ ____\___________|__| ____    ____  
- |     ___/  |  \_  __ \_/ __ \   |     ___/\__  \ |  |/    \  \__  \  /    \  / __ |   \_____  \|  |  \   __\\   __\/ __ \_  __ \  |/    \  / ___\ 
- |    |   |  |  /|  | \/\  ___/   |    |     / __ \|  |   |  \  / __ \|   |  \/ /_/ |   /        \  |  /|  |   |  | \  ___/|  | \/  |   |  \/ /_/  >
- |____|   |____/ |__|    \___  >  |____|    (____  /__|___|  / (____  /___|  /\____ |  /_______  /____/ |__|   |__|  \___  >__|  |__|___|  /\___  / 
-                             \/                  \/        \/       \/     \/      \/          \/                        \/              \//_____/  
+ _______  _______ _________ _______  _______  _______  _       
+(  ____ \(  ____ )\__   __/(       )(  ____ \(  ___  )( (    /|
+| (    \/| (    )|   ) (   | () () || (    \/| (   ) ||  \  ( |
+| |      | (____)|   | |   | || || || (_____ | |   | ||   \ | |
+| |      |     __)   | |   | |(_)| |(_____  )| |   | || (\ \) |
+| |      | (\ (      | |   | |   | |      ) || |   | || | \   |
+| (____/\| ) \ \_____) (___| )   ( |/\____) || (___) || )  \  |
+(_______/|/   \__/\_______/|/     \|\_______)(_______)|/    )_)
+                                                               
+         _______  _______  _______ _________ _        _______  
+        (  ____ \(  ___  )(  ____ \\__   __/( \      (  ____ \ 
+        | (    \/| (   ) || (    \/   ) (   | (      | (    \/ 
+        | |      | (___) || (_____    | |   | |      | (__     
+        | |      |  ___  |(_____  )   | |   | |      |  __)    
+        | |      | (   ) |      ) |   | |   | |      | (       
+        | (____/\| )   ( |/\____) |   | |   | (____/\| (____/\ 
+        (_______/|/     \|\_______)   )_(   (_______/(_______/ 
 ");
             TypeWithDelay("Your goal is to escape the castle while rescuing the queen while encountering a lot of enemies . GLHF :)");
             TypeWithDelay("\" A \" \n");
@@ -373,8 +384,28 @@ __________                       __________        .__                          
             Floor floor2 = new Floor(2);
             player.hp = player.hp_limit;
             floor2.Explore(player);
+           TypeWithDelay("As the player finally reached the inner chamber of the crimson castle, a sense of anticipation and excitement filled the air. In the heart of the castle, the queen awaited, her regal presence commanding respect and admiration.");
+            TypeWithDelay("Player: \"Your Majesty, we must leave this place swiftly. The castle is crumbling around us.\"");
+            TypeWithDelay("Queen: \"Thank you for coming to my rescue. I trust in your abilities to lead us out safely.\"");
+            TypeWithDelay("Together, they navigated through the crumbling corridors and dodged falling debris. The player cleared the path, while the queen followed closely behind.");
+            TypeWithDelay("Queen: \"I place my trust in you, brave hero. I know we will make it out together.\"");
+            TypeWithDelay("With a final push, they emerged from the castle, the once-imposing structure now reduced to rubble behind them. The queen looked out at the horizon, a sense of relief washing over her.");
+            TypeWithDelay("Queen: \"We have escaped the danger, thanks to your bravery. May we never forget this adventure.\"");
+            TypeWithDelay("Player: \"It was an honor to assist you, Your Majesty. Let us continue on our journey, for more challenges await us.\"");
+            TypeWithDelay("And with that, the player and the queen ventured forth, ready to face whatever adventure awaited them next.");
 
-            Console.WriteLine(@"
+            TypeWithDelay(@"
+                          
+ _____        _                            _   _                  
+/__   \___   | |__   ___    ___ ___  _ __ | |_(_)_ __  _   _  ___ 
+  / /\/ _ \  | '_ \ / _ \  / __/ _ \| '_ \| __| | '_ \| | | |/ _ \
+ / / | (_) | | |_) |  __/ | (_| (_) | | | | |_| | | | | |_| |  __/
+ \/   \___/  |_.__/ \___|  \___\___/|_| |_|\__|_|_| |_|\__,_|\___|
+                                                                  
+
+                          ");
+            
+            TypeWithDelay(@"
 ██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗██╗███╗   ██╗
 ╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║    ██║██║████╗  ██║
  ╚████╔╝ ██║   ██║██║   ██║    ██║ █╗ ██║██║██╔██╗ ██║
@@ -382,7 +413,7 @@ __________                       __________        .__                          
    ██║   ╚██████╔╝╚██████╔╝    ╚███╔███╔╝██║██║ ╚████║
    ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝
                                                       
-");
+",5);
 
             #endregion
 
