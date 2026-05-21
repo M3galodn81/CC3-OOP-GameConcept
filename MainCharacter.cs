@@ -8,7 +8,6 @@ namespace TowerGame {
         // Player Info
         public String player_name = "";
 
-
         // Player Progression
         public int current_floor_level = 0;
         public int basic_enemy_kills = 0;
@@ -77,7 +76,6 @@ namespace TowerGame {
             Console.WriteLine("============================================================");
             Console.WriteLine("| Equipped Item          : " + item_display + " |");
             Console.WriteLine("| Equipped Weapon        : " + weapon_display + " |");
-            
             Console.WriteLine("| First Skill            : " + skill_display + " |");
             Console.WriteLine("============================================================\n");
 
@@ -120,7 +118,6 @@ namespace TowerGame {
                 }
             }
         }
-
 
         public void pickWeapon(Weapon weapon){
             if (equipped_weapon == null) {

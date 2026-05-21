@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-
 using System.Threading;
 using System.Linq;
+
 
 namespace TowerGame
 {
@@ -241,101 +241,27 @@ namespace TowerGame
             }
         static void Main(string[] args)
         {
-        //     #region Class Declaration for CC3 checking
-
-        //     // MainCharacter player = new MainCharacter();
-        //     // player.NameAssignment();
-        //     // player.StatCheck();
-
-        //     // Item basic_health_potion = new Item();
-        //     // basic_health_potion.ItemGeneralSetup(1, "Basic Health Potion", "A potion that can heal small amount of HP", 1, 0);
-        //     // basic_health_potion.ItemHPSetup(25,0,0,0);
-
-        //     // player.pickItem(basic_health_potion);
-        //     // player.StatCheck();
-
-        //     // Skill fireball = new Skill();
-        //     // fireball.SkillGeneralSetup(1,"Fireball", "Shoot a fireball to the enemy to deal magic damage",0,2,0);
-        //     // fireball.SkillAttackSetup(2,50,0,0,0);
-
-        //     // player.first_skill = fireball;
-
-        //     // player.StatCheck();
-
-        //     // fireball.SkillInfo();
-
-        //     // Enemy slime = new Enemy();
-        //     // slime.SetUp("Slime","A small creature",30,30,20,20,0,0);
-
-        //     // slime.StatCheck();
-
-        //     // BattleInterface(player,slime);
-
-        //     #endregion
+            TextScript textScript = new TextScript();
 
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
+
             #region Start of the Game
             // Beginning Script
-            Console.WriteLine(@"
- _______  _______ _________ _______  _______  _______  _       
-(  ____ \(  ____ )\__   __/(       )(  ____ \(  ___  )( (    /|
-| (    \/| (    )|   ) (   | () () || (    \/| (   ) ||  \  ( |
-| |      | (____)|   | |   | || || || (_____ | |   | ||   \ | |
-| |      |     __)   | |   | |(_)| |(_____  )| |   | || (\ \) |
-| |      | (\ (      | |   | |   | |      ) || |   | || | \   |
-| (____/\| ) \ \_____) (___| )   ( |/\____) || (___) || )  \  |
-(_______/|/   \__/\_______/|/     \|\_______)(_______)|/    )_)
-                                                               
-         _______  _______  _______ _________ _        _______  
-        (  ____ \(  ___  )(  ____ \\__   __/( \      (  ____ \ 
-        | (    \/| (   ) || (    \/   ) (   | (      | (    \/ 
-        | |      | (___) || (_____    | |   | |      | (__     
-        | |      |  ___  |(_____  )   | |   | |      |  __)    
-        | |      | (   ) |      ) |   | |   | |      | (       
-        | (____/\| )   ( |/\____) |   | |   | (____/\| (____/\ 
-        (_______/|/     \|\_______)   )_(   (_______/(_______/ 
-");
-            TypeWithDelay("Your goal is to escape the castle while rescuing the queen while encountering a lot of enemies . GLHF :)");
-            TypeWithDelay("\" A \" \n");
-
+            textScript.PrintTitleScreen();
 
             // User Input (Name)
             MainCharacter player = new MainCharacter();
             player.NameAssignment();
             player.StatCheck();
             Console.Clear();
-            TypeWithDelay(" So before we begin, lets have a tutorial about the combat system in this game.");
 
             #endregion
 
             #region Battle Tutorial Phase? ig
-        
-            TypeWithDelay("Tutorial Stage");
-
-            TypeWithDelay("As of now , you can only do basic attacks so ye pain. ");
-            TypeWithDelay("Anyway, this battle system here is {turn-based} since console app moment. ");
-            TypeWithDelay("Usually you will have the first to use the turn then it's the enemy's turn");
-            TypeWithDelay("The controls during battle are: \n");
-
-            TypeWithDelay("[1] for basic attack   ");
-            TypeWithDelay("[2] for first skill    ");
-            TypeWithDelay("[3] for ultimate skill \n");
-            TypeWithDelay("[Q] for stat check     ");
-            TypeWithDelay("[E] for using the equipped item   ");
-            TypeWithDelay("[H] for help panel   ");
-
-            TypeWithDelay("BTW, you don't need to press Enter during the battle, since the developer will suffer just for good user experience LMAO");
-            TypeWithDelay("Anyway, before you encounter an enemy later");
-            TypeWithDelay("You are only enable to do a basic attack");
-            TypeWithDelay("I hope you should remember that");
-
-            TypeWithDelay("SO are you ready to suffer? ");
-            TypeWithDelay("Press [Enter] to continue");
-
-
+            textScript.PrintTutorialText();
             do {
                 if (Console.ReadKey(true).Key == ConsoleKey.Enter) {
                     break;
@@ -347,46 +273,27 @@ namespace TowerGame
             Enemy mini_slime = new Enemy();
             mini_slime.SetUp("Small Slime","A small goofy ah creature",40,40,0,7,0,0,2);
             
-            if(BattleInterface(player,mini_slime) == false){
+            if (BattleInterface(player,mini_slime) == false){
                 Console.WriteLine("wha uoghhhhhh");
             } else {
                 TypeWithDelay("Congrats you beat the tutorial stage");
             }
 
-            
+
             #endregion
 
             #region Start
 
-            Console.WriteLine(@"
- _______  __        ______     ______   .______          __  
-|   ____||  |      /  __  \   /  __  \  |   _  \        /_ | 
-|  |__   |  |     |  |  |  | |  |  |  | |  |_)  |        | | 
-|   __|  |  |     |  |  |  | |  |  |  | |      /         | | 
-|  |     |  `----.|  `--'  | |  `--'  | |  |\  \----.    | | 
-|__|     |_______| \______/   \______/  | _| `._____|    |_| 
-                                                             
-
-");
-
-            Floor floor1 = new Floor(1);
-            player.hp = player.hp_limit;
-            Console.WriteLine(string.Join(", ", floor1.floor_rooms));
-            floor1.Explore(player);
+            for (int i = 1; i < 3; i++)
+            {
+                textScript.PrintFloorNumber(i);
+                Floor current_floor = new Floor(i);
+                Console.WriteLine(string.Join(", ", current_floor.floor_rooms));
+                current_floor.Explore(player);
+            }
 
 
-            Console.WriteLine(@"
- _______  __        ______     ______   .______          ___   
-|   ____||  |      /  __  \   /  __  \  |   _  \        |__ \  
-|  |__   |  |     |  |  |  | |  |  |  | |  |_)  |          ) | 
-|   __|  |  |     |  |  |  | |  |  |  | |      /          / /  
-|  |     |  `----.|  `--'  | |  `--'  | |  |\  \----.    / /_  
-|__|     |_______| \______/   \______/  | _| `._____|   |____| 
- ");                                                              
 
-            Floor floor2 = new Floor(2);
-            player.hp = player.hp_limit;
-            floor2.Explore(player);
            TypeWithDelay("As the player finally reached the inner chamber of the crimson castle, a sense of anticipation and excitement filled the air. In the heart of the castle, the queen awaited, her regal presence commanding respect and admiration.");
             TypeWithDelay("Player: \"Your Majesty, we must leave this place swiftly. The castle is crumbling around us.\"");
             TypeWithDelay("Queen: \"Thank you for coming to my rescue. I trust in your abilities to lead us out safely.\"");
